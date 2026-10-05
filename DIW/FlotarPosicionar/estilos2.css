@@ -1,0 +1,96 @@
+/* Reset global de estilos para todos los elementos */
+* {
+  box-sizing: border-box; /* Hace que el padding y bordes se incluyan dentro del ancho total de las cajas */
+  margin: 0;              /* Elimina los márgenes exteriores por defecto del navegador */
+  padding: 0;             /* Elimina los rellenados interiores por defecto del navegador */
+  font-family: Arial, sans-serif; /* Establece la fuente Arial como tipografía principal */
+  font-weight: bold;      /* Pone todos los textos en negrita */
+  color: #333;            /* Aplica un color gris oscuro general para los textos */
+}
+
+
+/* Contenedor principal de todo el maquetado */
+.container {
+  width: 95%;             /* Define el ancho en % para que el diseño sea responsive[cite: 1] */
+  margin: 20px auto;      /* Centra el contenedor en la pantalla (20px arriba/abajo, auto a los lados) */
+  background-color: #f4f4f4; /* Asigna un fondo gris claro al marco exterior */
+  padding: 10px;          /* Añade separación interior dentro del contenedor principal */
+}
+
+
+/* Encabezado (HEADER) */
+.header {
+  width: 100%;            /* Ocupa el 100% del ancho disponible en su contenedor */
+  height: 90px;           /* Establece una altura fija de 90 píxeles */
+  background-color: #FF9F52; /* Color de fondo naranja */
+  padding: 15px;          /* Espaciado interno para descolgar los elementos interiores */
+  position: relative;     /* Posicionamiento relativo de referencia para elementos hijos[cite: 1] */
+  margin-bottom: 0;       /* Asegura que no exista espacio debajo de la cabecera */
+}
+
+
+/* Bloque del LOGO dentro del Header */
+.logo {
+  float: left;            /* Flota el elemento a la izquierda de la cabecera[cite: 1, 2] */
+  width: 12%;             /* Ancho del 12% relativo al header para ser responsive[cite: 1] */
+  height: 60px;           /* Altura del cuadro del logo */
+  background-color: #FF4B72; /* Color de fondo rosa/rojo */
+  color: #4a131e;         /* Color del texto 'LOGO' */
+  display: flex;          /* Activa flexbox para centrar el texto dentro de la caja */
+  align-items: center;    /* Centra el texto 'LOGO' verticalmente */
+  justify-content: center; /* Centra el texto 'LOGO' horizontalmente */
+}
+
+
+/* Bloque de NAVEGACIÓN dentro del Header */
+.navigation {
+  float: right;           /* Flota el elemento a la derecha de la cabecera[cite: 1, 2] */
+  width: 18%;             /* Ancho del 18% relativo al header[cite: 1] */
+  height: 60px;           /* Altura del cuadro de navegación */
+  background-color: #D9534F; /* Color de fondo rojo oscuro */
+  color: #fff;            /* Color blanco para el texto 'NAVIGATION' */
+  display: flex;          /* Activa flexbox para el centrado del texto */
+  align-items: center;    /* Centra el texto 'NAVIGATION' verticalmente */
+  justify-content: center; /* Centra el texto 'NAVIGATION' horizontalmente */
+}
+
+
+/* Truco de Clearfix en el contenedor intermedio */
+.contenedor-principal::after {
+  content: "";            /* Inserta un elemento invisible tras el wrapper */
+  display: table;         /* Transforma el pseudoelemento en formato de tabla */
+  clear: both;            /* Limpia los flotados para que el contenedor no colapse su altura[cite: 1] */
+}
+
+
+/* Columna de la Barra Lateral (SIDEBAR) */
+.sidebar {
+  float: left;            /* Flota la barra lateral hacia la izquierda[cite: 1, 2] */
+  width: 25%;             /* Ocupa un 25% del ancho de la pantalla[cite: 1] */
+  height: 350px;          /* Altura del área del sidebar */
+  background-color: #FFC04D; /* Color de fondo amarillo/naranja */
+  padding: 15px;          /* Espacio interior para colocar el texto 'SIDEBAR' */
+}
+
+
+/* Columna de Contenido Principal (MAIN) */
+.main {
+  float: left;            /* Flota a la izquierda para ponerse justo al lado del sidebar[cite: 1, 2] */
+  width: 75%;             /* Ocupa el 75% restante (25% sidebar + 75% main = 100%)[cite: 1] */
+  height: 350px;          /* Mantiene la misma altura que el sidebar */
+  background-color: #7CA6BE; /* Color de fondo azul */
+  color: #fff;            /* Color blanco para el texto 'MAIN' */
+  padding: 15px;          /* Espacio interior para colocar el texto 'MAIN' */
+}
+
+
+/* Pie de Página (FOOTER) */
+.footer {
+  clear: both;            /* Rompe el flujo flotado anterior para colocarse obligatoriamente debajo[cite: 1] */
+  width: 100%;            /* Ocupa el 100% del ancho del contenedor */
+  height: 60px;           /* Altura del pie de página */
+  background-color: #A5D63F; /* Color de fondo verde */
+  padding: 15px;          /* Espaciado interno */
+  display: flex;          /* Permite usar alineación flex */
+  align-items: center;    /* Centra el texto 'FOOTER' verticalmente */
+}

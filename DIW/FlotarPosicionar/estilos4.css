@@ -1,0 +1,98 @@
+* {
+  box-sizing: border-box; /* Incluye bordes y padding dentro del ancho total especificado */
+  margin: 0;              /* Elimina todos los márgenes exteriores por defecto */
+  padding: 0;             /* Elimina todos los rellenados interiores por defecto */
+  font-family: Arial, sans-serif; /* Aplica la fuente Arial a todo el documento */
+  font-weight: bold;      /* Pone todos los textos del maquetado en negrita */
+  color: #333;            /* Color de texto gris oscuro por defecto */
+}
+.container {
+  width: 95%;             /* Ancho en % para adaptar el layout al ancho de la ventana */
+  margin: 20px auto;      /* Centra horizontalmente el contenedor en la pantalla */
+  background-color: #E8F4F8; /* Fondo azul muy claro para el borde externo */
+  padding: 10px;          /* Espaciado interno para separar el contenido del borde */
+}
+.header {
+  width: 100%;            /* Ocupa todo el ancho horizontal disponible */
+  height: 90px;           /* Altura fija del bloque naranja */
+  background-color: #FF9F52; /* Color de fondo naranja */
+  padding: 15px;          /* Separación interior para los elementos flotados */
+  position: relative;     /* Establece contexto de posicionamiento */
+}
+.logo {
+  float: left;            /* Flota el logo a la parte izquierda */
+  width: 10%;             /* Ancho en porcentaje relativo al header[cite: 1] */
+  height: 60px;           /* Altura de la caja rosa */
+  background-color: #FF4B72; /* Color de fondo rosa */
+  display: flex;          /* Flexbox para centrado del texto */
+  align-items: center;    /* Centra el texto 'LOGO' verticalmente */
+  justify-content: center; /* Centra el texto 'LOGO' horizontalmente */
+}
+.navigation {
+  float: right;           /* Flota la barra de navegación a la derecha*/
+  width: 65%;             /* Ancho en porcentaje que ocupa gran parte de la derecha */
+  height: 60px;           /* Altura de la caja roja de navegación */
+  background-color: #E75D48; /* Color de fondo rojo/naranja oscuro */
+  color: #333;            /* Color del texto 'NAVIGATION' */
+  padding-left: 20px;     /* Alinea el texto hacia la izquierda de su caja */
+  display: flex;          /* Flexbox para alineación */
+  align-items: center;    /* Centra el texto verticalmente */
+}
+.main-content {
+  width: 100%;            /* Ocupa todo el ancho del contenedor */
+  background-color: #7CA6BE; /* Color de fondo azul principal */
+  padding: 20px;          /* Margen interno que rodea al sidebar y los subcontenidos */
+}
+.main-content::after {
+  content: "";            /* Elemento invisible tras el contenedor */
+  display: table;         /* Se comporta como una tabla para forzar altura */
+  clear: both;            /* Limpia flotados laterales impidiendo que el contenedor colapse*/
+}
+.sidebar {
+  float: left;            /* Flota la barra lateral a la izquierda dentro de la sección azul */
+  width: 28%;             /* Ancho relativo en % para respuesta adaptable */
+  height: 250px;          /* Altura del rectángulo del sidebar */
+  background-color: #FFC04D; /* Color de fondo amarillo/naranja */
+  padding: 15px;          /* Espacio interior para el texto 'SIDEBAR' */
+}
+.right-content {
+  float: right;           /* Flota todo el bloque secundario a la derecha[cite: 1, 2] */
+  width: 65%;             /* Ancho en % alineado con el ancho de navegación superior[cite: 1] */
+}
+
+
+/* Primer bloque de SUB CONTENT */
+.sub-content {
+  width: 100%;            /* Ocupa todo el ancho del bloque derecho */
+  height: 50px;           /* Altura de la barra azul oscura */
+  background-color: #41697E; /* Color de fondo azul oscuro */
+  color: #fff;            /* Texto en color blanco */
+  padding-left: 15px;     /* Separación del texto desde el borde izquierdo */
+  margin-bottom: 10px;    /* Espacio vertical entre SUB CONTENT y SUB CONTENT 2 */
+  display: flex;          /* Activa flexbox para alineación del texto */
+  align-items: center;    /* Centra el texto 'SUB CONTENT' verticalmente */
+}
+
+
+/* Segundo bloque de SUB CONTENT 2 */
+.sub-content-2 {
+  width: 100%;            /* Ocupa todo el ancho del bloque derecho */
+  height: 50px;           /* Altura de la barra azul grisácea */
+  background-color: #314A5A; /* Color de fondo azul más oscuro/grisáceo */
+  color: #fff;            /* Texto en color blanco */
+  padding-left: 15px;     /* Separación del texto desde el borde izquierdo */
+  display: flex;          /* Activa flexbox para alineación del texto */
+  align-items: center;    /* Centra el texto 'SUB CONTENT 2' verticalmente */
+}
+
+
+/* 3. PIE DE PÁGINA (FOOTER) */
+.footer {
+  clear: both;            /* Anula los flotados anteriores para colocarse abajo del todo[cite: 1] */
+  width: 100%;            /* Ocupa el 100% del ancho inferior */
+  height: 60px;           /* Altura del pie de página verde */
+  background-color: #A5D63F; /* Color verde de fondo */
+  padding: 15px;          /* Espaciado interno */
+  display: flex;          /* Flexbox para centrar alineaciones */
+  align-items: center;    /* Centra el texto 'FOOTER' verticalmente */
+}

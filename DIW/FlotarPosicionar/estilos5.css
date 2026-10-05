@@ -1,0 +1,114 @@
+* {
+  box-sizing: border-box; /* Incluye border y padding dentro del ancho/alto total de las cajas */
+  margin: 0;              /* Elimina todos los márgenes por defecto de los elementos */
+  padding: 0;             /* Elimina todos los rellenos interiores por defecto */
+  font-family: Arial, sans-serif; /* Tipografía Arial para todo el documento */
+  font-weight: bold;      /* Pone todos los textos en negrita como en la imagen */
+}
+
+
+/* Cuerpo de la página */
+body {
+  background-color: #7CA6BE; /* Fondo azul para todo el fondo del blog */
+}
+
+
+/* 1. BARRA DE IDENTIFICACIÓN / HEADER (FIJA EN PANTALLA) */
+.header {
+  position: fixed;        /* Posición fija para estar siempre visible sin depender del scroll[cite: 3] */
+  top: 0;                 /* Ancla la barra a la parte superior exacta de la ventana */
+  left: 0;                /* Ancla la barra al borde izquierdo de la ventana */
+  width: 100%;            /* Ocupa el 100% del ancho de la pantalla de forma responsive */
+  height: 80px;           /* Altura fija de la cabecera */
+  background-color: #FF9F52; /* Color naranja de fondo */
+  padding: 12px 20px;     /* Espaciado interno horizontal y vertical */
+  z-index: 1000;          /* Capa alta para que pase siempre por encima del contenido en scroll */
+}
+
+
+/* LOGO (Extremo izquierdo de la barra superior) */
+.logo {
+  float: left;            /* Flota la caja del logo a la izquierda */
+  width: 12%;             /* Ancho en porcentaje relativo a la pantalla[cite: 1, 2] */
+  height: 56px;           /* Altura del rectángulo rosa */
+  background-color: #FF4B72; /* Color de fondo rosa */
+  color: #333;            /* Color del texto */
+  display: flex;          /* Flexbox para centrar el texto dentro del cuadro */
+  align-items: center;    /* Centrado vertical del texto 'LOGO' */
+  justify-content: center; /* Centrado horizontal del texto 'LOGO' */
+}
+
+
+/* NAVIGATION (Extremo derecho de la barra superior) */
+.navigation {
+  float: right;           /* Flota la navegación a la derecha de la barra[cite: 1, 2] */
+  width: 20%;             /* Ancho en porcentaje adaptativo[cite: 1, 2] */
+  height: 56px;           /* Altura idéntica al logo */
+  background-color: #E75D48; /* Color de fondo rojo/naranja oscuro */
+  color: #333;            /* Color del texto 'NAVIGATION' */
+  display: flex;          /* Flexbox para centrar */
+  align-items: center;    /* Centrado vertical */
+  justify-content: center; /* Centrado horizontal */
+}
+
+
+/* 2. CONTENEDOR PRINCIPAL DEL BLOG */
+.main-content {
+  width: 95%;             /* Ancho relativo del contenedor en % para ser responsive[cite: 1, 2] */
+  margin: 100px auto 30px auto; /* Margin-top de 100px para que el header fijo no tape el contenido */
+  padding: 10px;          /* Separación interna */
+}
+
+
+/* TARJETA DE CADA PUBLICACIÓN (POST) */
+.post {
+  width: 100%;            /* Ocupa todo el ancho disponible del contenedor */
+  background-color: #A5D63F; /* Color de fondo verde claro */
+  padding: 20px;          /* Relleno interno alrededor del contenido del post */
+  margin-bottom: 25px;    /* Margen de separación inferior entre cada tarjeta */
+}
+
+
+/* TÍTULO DEL POST */
+.post-title {
+  color: #fff;            /* Texto en color blanco */
+  font-size: 24px;        /* Tamaño de fuente grande para la cabecera */
+  margin-bottom: 15px;    /* Separación inferior respecto a la imagen y el texto */
+  text-transform: uppercase; /* Convierte las letras a mayúsculas */
+}
+
+
+/* SECCIÓN DEL CUERPO DEL POST (Aplica Clearfix para flotados internos) */
+.post-body::after {
+  content: "";            /* Pseudo-elemento invisible */
+  display: table;         /* Formato de tabla para calcular altura */
+  clear: both;            /* Limpia flotados laterales e impide colapso[cite: 1] */
+}
+
+
+/* CAJA DE IMAGEN DEL POST */
+.post-image {
+  float: left;            /* Flota la caja de la imagen a la izquierda[cite: 1, 2] */
+  width: 25%;             /* Ancho relativo en % para adaptarse a la pantalla[cite: 1, 2] */
+  height: 180px;          /* Altura del cuadro de imagen */
+  background-color: #8BB92B; /* Verde medio para simular el contenedor de la imagen */
+  color: #fff;            /* Texto 'IMAGE' en blanco */
+  display: flex;          /* Activa flexbox */
+  align-items: center;    /* Centra 'IMAGE' verticalmente */
+  justify-content: center; /* Centra 'IMAGE' horizontalmente */
+}
+
+
+/* CAJA DE TEXTO DEL POST */
+.post-text {
+  float: right;           /* Flota la caja de texto hacia la derecha[cite: 1, 2] */
+  width: 72%;             /* Ancho en % (25% + 72% + margen = 100% de la tarjeta)[cite: 1, 2] */
+  height: 180px;          /* Altura a juego con el contenedor de la imagen */
+  background-color: #688A1B; /* Verde oscuro para el fondo del párrafo */
+  color: #fff;            /* Texto en color blanco */
+  padding: 20px;          /* Espaciado interno para que el texto respire */
+  font-weight: normal;    /* Texto de lectura con peso normal */
+  font-size: 15px;        /* Tamaño de fuente del párrafo */
+  line-height: 1.4;       /* Interlineado cómodo para leer */
+  overflow: hidden;       /* Recorta texto en caso de exceso */
+}

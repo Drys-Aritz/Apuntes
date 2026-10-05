@@ -1,0 +1,112 @@
+* {
+  box-sizing: border-box; /* Incluye el padding y el borde dentro del ancho y alto definidos */
+  margin: 0;              /* Elimina los márgenes que el navegador aplica por defecto */
+  padding: 0;             /* Elimina los espacios interiores que el navegador aplica por defecto */
+  font-family: Arial, sans-serif; /* Define Arial como fuente principal y sans-serif como alternativa */
+  font-weight: bold;      /* Muestra el texto en negrita */
+  color: #333;            /* Establece el color de texto gris oscuro por defecto */
+}
+
+.container {
+  width: 800px;
+  margin: 20px;      /* Añade 20px arriba y abajo, y centra el contenedor horizontalmente */
+  background-color: #E8F4F8; /* Aplica un fondo azul claro al contenedor */
+  padding: 10px;          /* Separa el contenido de los bordes del contenedor */
+}
+
+/*  HEADER  */
+
+.header {
+  width: 100%;            /* Ocupa todo el ancho disponible dentro del contenedor */
+  height: 80px;           /* Fija la altura del encabezado en 80px */
+  background-color: #FF9F52; /* Aplica el fondo naranja al encabezado */
+  padding: 15px;          /* Añade espacio interior alrededor de sus elementos */
+  position: relative;     /* Establece el encabezado como referencia para elementos posicionados */
+}
+
+/* NAVEGACIÓN */
+
+.navigation {
+  float: left;            /* Coloca la navegación a la izquierda del encabezado */
+  width: 17%;             /* Ocupa el 17% del ancho disponible */
+  height: 45px;           /* Fija la altura de la caja de navegación */
+  background-color: #E75D48; /* Aplica el fondo rojo anaranjado */
+  padding-left: 15px;     /* Separa el texto 15px del borde izquierdo */
+
+  display: flex;          /* Activa Flexbox para alinear el contenido */
+  align-items: center;    /* Centra verticalmente el texto dentro de la caja */
+}
+
+/* LOGO */
+
+.logo {
+  float: right;           /* Coloca el logo a la derecha del encabezado */
+  width: 9%;              /* Ocupa el 9% del ancho disponible */
+  height: 45px;           /* Fija la altura de la caja del logo */
+  background-color: #FF4B72; /* Aplica el fondo rosa al logo */
+
+  display: flex;          /* Activa Flexbox para alinear el texto del logo */
+  align-items: center;    /* Centra verticalmente el texto del logo */
+  justify-content: center; /* Centra horizontalmente el texto del logo */
+}
+
+/*  CONTENIDO PRINCIPAL  */
+
+.main-content {
+  width: 100%;            /* Ocupa todo el ancho disponible dentro del contenedor */
+  height: 265px;          /* Fija la altura del área de contenido principal */
+  background-color: #7CA6BE; /* Aplica el fondo azul al área principal */
+  padding: 15px;          /* Añade espacio interior alrededor de las columnas */
+}
+
+/* SIDEBAR */
+
+.sidebar {
+  float: left;            /* Coloca la barra lateral a la izquierda del contenido principal */
+  width: 26%;             /* Ocupa el 26% del ancho disponible */
+  height: 224px;          /* Fija la altura de la barra lateral */
+  background-color: #FFC04D; /* Aplica el fondo amarillo anaranjado */
+  color: white;           /* Muestra el texto de la barra lateral en blanco */
+  padding: 15px;          /* Añade espacio interior alrededor del texto */
+}
+
+/* CONTENIDO DE LA DERECHA */
+
+.right-content {
+  float: right;           /* Coloca este bloque a la derecha del contenido principal */
+  width: 52%;             /* Ocupa el 52% del ancho disponible */
+}
+
+/* SUB CONTENT */
+
+.sub-content {
+  width: 100%;            /* Ocupa todo el ancho del bloque derecho */
+  height: 112px;          /* Fija la altura del primer bloque secundario */
+  background-color: #41697E; /* Aplica un fondo azul oscuro */
+  color: white;           /* Muestra el texto en blanco */
+  padding: 15px;          /* Añade espacio interior alrededor del texto */
+  margin-bottom: 10px;    /* Separa este bloque del siguiente */
+}
+
+/* SUB CONTENT 2 */
+
+.sub-content-2 {
+  width: 100%;            /* Ocupa todo el ancho del bloque derecho */
+  height: 112px;          /* Fija la altura del segundo bloque secundario */
+  background-color: #314A5A; /* Aplica un fondo azul grisáceo oscuro */
+  color: white;           /* Muestra el texto en blanco */
+  padding: 15px;          /* Añade espacio interior alrededor del texto */
+}
+
+/*  FOOTER  */
+
+.footer {
+  clear: both;            /* Hace que el pie aparezca debajo de los elementos flotantes */
+  width: 100%;            /* Ocupa todo el ancho disponible */
+  height: 45px;           /* Fija la altura del pie de página */
+  background-color: #A5D63F; /* Aplica el fondo verde */
+  padding: 15px;          /* Añade espacio interior alrededor del contenido */
+
+  display: flex;          /* Activa Flexbox para alinear el contenido del pie */
+  align-items: center;    /* Centra verticalmente el texto del pie */
+}
