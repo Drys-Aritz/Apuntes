@@ -60,5 +60,53 @@ console.log("alumnos que an suspendido: " + suspendidos);
     ○ Bien (6-6.99)
     ○ Suficiente (5-5.99)
     ○ Suspenso (0-4.99)*/
+let sobresalientes = 0;
+let notables = 0;
+let bienes = 0;
+let suficientes = 0;
+let suspensos = 0;
+for (let i = 0; i < notaExamen.length; i++) {
+    if (notaExamen[i] >= 9 && notaExamen[i] <= 10) {
+        //console.log("Alumno: " + alumno[i] + " Sobresaliente: " + notaExamen[i]);
+        sobresalientes += 1;
+    } else if (notaExamen[i] >= 7 && notaExamen[i] <= 8.99) {
+        //console.log("Alumno: " + alumno[i] + " Notable: " + notaExamen[i]);
+        notables += 1;
+    } else if (notaExamen[i] >= 6 && notaExamen[i] <= 6.99) {
+        //console.log("Alumno: " + alumno[i] + " Bien: " + notaExamen[i]);
+        bienes += 1;
+    } else if (notaExamen[i] >= 5 && notaExamen[i] <= 5.99) {
+        //console.log("Alumno: " + alumno[i] + " Suficiente: " + notaExamen[i])
+        suficientes += 1;
+    } else if (notaExamen[i] >= 0 && notaExamen[i] <= 4.99) {
+        //console.log("Alumno: " + alumno[i] + " Suspenso: " + notaExamen[i])
+        suspensos += 1;
+    }
+}
+console.log("Sobresaliente: "+sobresalientes);
+console.log("notables: "+notables);
+console.log("bienes: "+bienes);
+console.log("suficientes: "+suficientes);
+console.log("suspensos: "+suspensos);
+
+
 //El porcentaje de aprobados.
+let alumnosAprbados = 0;
+let porcentaje = 0;
+for (let i = 0; i < notaExamen.length; i++) {
+    if (notaExamen[i] >= 5) {
+        alumnosAprbados++;
+    }
+}
+porcentaje = alumnosAprbados / numeroAlumnos * 100;
+console.log("aprobados: "+porcentaje.toFixed(2)+"%");
 //El porcentaje de suspensos.
+let alumnosSuspendidos = 0;
+porcentaje = 0;
+for (let i = 0; i < notaExamen.length; i++) {
+    if (notaExamen[i] < 5) {
+        alumnosSuspendidos++;
+    }
+}
+porcentaje = alumnosSuspendidos / numeroAlumnos * 100;
+console.log("aprobados: "+porcentaje.toFixed(2)+"%");
