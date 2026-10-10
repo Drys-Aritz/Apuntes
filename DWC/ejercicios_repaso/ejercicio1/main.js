@@ -8,11 +8,13 @@ numeroAlumnos = prompt("Cuantos alumnos hay?");
 for (let i = 1; i <= numeroAlumnos; i++) {
     console.log("alumno " + i);
     alumno[i - 1] = prompt("Introducir nombre del alumno:");
+    alert("Alumno introdicido corectamente, alumno: "+alumno[i - 1]);
     console.log(alumno[i - 1]);
     do {
         notaExamen[i - 1] = Number(prompt("Introducir nota del alumno:")) || 0;
     } while (notaExamen[i - 1] < 0 || notaExamen[i - 1] > 10);
     console.log(notaExamen[i - 1]);
+    alert("Nota introdicido corectamente, nota: "+notaExamen[i - 1]);
 
 }
 
