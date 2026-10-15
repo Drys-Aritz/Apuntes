@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Adaptar la página a móviles -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TaskFlow - Gestión de tareas</title>
+
+    <!-- Conectar el archivo CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Cargar JavaScript cuando se haya analizado el HTML -->
+    <script src="app.js" defer></script>
+</head>
+<body>
+
+    <header class="header">
+        <h1>TaskFlow</h1>
+        <p>Gestión de tareas e incidencias</p>
+    </header>
+
+    <main class="container">
+
+        <!-- Formulario para crear tareas -->
+        <section class="card">
+            <h2>Nueva tarea</h2>
+
+            <form id="task-form">
+                <div class="field">
+                    <label for="title">Título</label>
+                    <input
+                        type="text"
+                        id="title"
+                        name="title"
+                        maxlength="150"
+                        required
+                    >
+                </div>
+
+                <div class="field">
+                    <label for="description">Descripción</label>
+                    <textarea
+                        id="description"
+                        name="description"
+                    ></textarea>
+                </div>
+
+                <div class="field">
+                    <label for="priority">Prioridad</label>
+                    <select id="priority" name="priority">
+                        <option value="baja">Baja</option>
+                        <option value="media" selected>Media</option>
+                        <option value="alta">Alta</option>
+                    </select>
+                </div>
+
+                <button type="submit">Crear tarea</button>
+            </form>
+
+            <!-- Aquí mostraremos mensajes -->
+            <p id="message" role="status" aria-live="polite"></p>
+        </section>
+
+        <!-- Listado de tareas -->
+        <section class="card">
+            <h2>Listado de tareas</h2>
+
+            <ul id="task-list" class="task-list">
+                <!-- JavaScript insertará las tareas aquí -->
+            </ul>
+        </section>
+
+    </main>
+
+</body>
+</html>

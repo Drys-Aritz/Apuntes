@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Metadatos: no suelen mostrarse como contenido de la página -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ejemplos básicos de HTML">
+    <title>Apuntes de HTML</title>
+
+    <!-- Conectar CSS y JavaScript -->
+    <link rel="stylesheet" href="../css/02-css.css">
+    <script src="../js/03-js.js" defer></script>
+</head>
+<body>
+    <!-- Cabecera y navegación -->
+    <header class="site-header">
+        <h1>Apuntes de HTML</h1>
+        <nav aria-label="Navegación principal">
+            <a href="#texto">Texto</a>
+            <a href="#listas">Listas</a>
+            <a href="#tabla">Tabla</a>
+            <a href="#formulario">Formulario</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- Títulos y texto -->
+        <section id="texto" class="card">
+            <h2>Texto y semántica</h2>
+            <p>Un párrafo con <strong>importancia</strong> y <em>énfasis</em>.</p>
+            <p>También existen <mark>texto resaltado</mark> y <small>texto pequeño</small>.</p>
+            <p>Un salto de línea:<br>segunda línea.</p>
+            <hr>
+            <blockquote>Una cita larga se puede marcar con blockquote.</blockquote>
+            <p>Para código en línea: <code>console.log("Hola")</code></p>
+        </section>
+
+        <!-- Enlaces e imágenes -->
+        <section class="card">
+            <h2>Enlaces e imágenes</h2>
+            <p><a href="https://developer.mozilla.org/es/" target="_blank" rel="noopener noreferrer">Documentación MDN</a></p>
+            <img src="imagen-ejemplo.jpg" alt="Descripción de la imagen">
+            <!-- Cambia la ruta de ejemplo por una imagen real del proyecto -->
+        </section>
+
+        <!-- Listas -->
+        <section id="listas" class="card">
+            <h2>Listas</h2>
+            <h3>Lista sin orden</h3>
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+            </ul>
+
+            <h3>Lista ordenada</h3>
+            <ol>
+                <li>Analizar el problema</li>
+                <li>Escribir el código</li>
+                <li>Probar el resultado</li>
+            </ol>
+
+            <h3>Lista de definiciones</h3>
+            <dl>
+                <dt>HTML</dt>
+                <dd>Define la estructura del contenido.</dd>
+                <dt>CSS</dt>
+                <dd>Define la presentación visual.</dd>
+            </dl>
+        </section>
+
+        <!-- Tabla: usar thead y tbody para organizarla -->
+        <section id="tabla" class="card">
+            <h2>Tabla de tareas</h2>
+            <table>
+                <caption>Tareas de ejemplo</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Tarea</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Prioridad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Revisar formulario</td>
+                        <td>Pendiente</td>
+                        <td>Alta</td>
+                    </tr>
+                    <tr>
+                        <td>Actualizar estilos</td>
+                        <td>Completada</td>
+                        <td>Media</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Formulario: label debe asociarse con el id del campo -->
+        <section id="formulario" class="card">
+            <h2>Formulario de ejemplo</h2>
+            <form id="demo-form">
+                <div class="field">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre"
+                           placeholder="Escribe tu nombre" required minlength="2">
+                </div>
+
+                <div class="field">
+                    <label for="correo">Correo electrónico</label>
+                    <input type="email" id="correo" name="correo" required>
+                </div>
+
+                <div class="field">
+                    <label for="edad">Edad</label>
+                    <input type="number" id="edad" name="edad" min="0" max="120">
+                </div>
+
+                <div class="field">
+                    <label for="fecha">Fecha</label>
+                    <input type="date" id="fecha" name="fecha">
+                </div>
+
+                <div class="field">
+                    <label for="color">Color favorito</label>
+                    <select id="color" name="color">
+                        <option value="">Elige una opción</option>
+                        <option value="azul">Azul</option>
+                        <option value="verde">Verde</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="comentario">Comentario</label>
+                    <textarea id="comentario" name="comentario" rows="4"></textarea>
+                </div>
+
+                <label>
+                    <input type="checkbox" name="acepto" value="si">
+                    Acepto las condiciones
+                </label>
+
+                <fieldset>
+                    <legend>Tipo de usuario</legend>
+                    <label><input type="radio" name="tipo" value="cliente"> Cliente</label>
+                    <label><input type="radio" name="tipo" value="empleado"> Empleado</label>
+                </fieldset>
+
+                <button type="submit">Enviar</button>
+                <button type="reset" class="secondary">Limpiar</button>
+            </form>
+            <p id="form-message" role="status" aria-live="polite"></p>
+        </section>
+
+        <!-- Contenedores genéricos -->
+        <section class="card">
+            <h2>Contenedores</h2>
+            <div>div: contenedor de bloque genérico.</div>
+            <span>span: contenedor en línea.</span>
+            <p>Usa elementos semánticos cuando tengan sentido, no solo div para todo.</p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 - Ejemplo para practicar</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,120 @@
+
+/* Aplicar un cálculo de tamaños más predecible */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f3f5f9;
+    color: #222;
+}
+
+/* Cabecera */
+.header {
+    background-color: #243b55;
+    color: white;
+    text-align: center;
+    padding: 24px 16px;
+}
+
+/* Contenedor principal */
+.container {
+    width: min(100% - 32px, 850px);
+    margin: 24px auto;
+}
+
+/* Tarjetas de contenido */
+.card {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+
+/* Campos del formulario */
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    font: inherit;
+}
+
+textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+#description {
+  text-shadow: #666;
+}
+/* Botones */
+button {
+    padding: 10px 14px;
+    border: none;
+    border-radius: 5px;
+    background-color: #1769aa;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #104d80;
+}
+
+/* Lista de tareas */
+.task-list {
+    list-style: none;
+    padding: 0;
+}
+
+.task-item {
+    padding: 14px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.task-title {
+    font-weight: bold;
+}
+
+.task-meta {
+    color: #555;
+    font-size: 14px;
+}
+
+.task-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+/* Estado visual de una tarea completada */
+.completed .task-title {
+    text-decoration: line-through;
+    color: #666;
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 600px) {
+    .container {
+        width: calc(100% - 20px);
+        margin: 10px auto;
+    }
+
+    .card {
+        padding: 14px;
+    }
+}

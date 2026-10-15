@@ -1,0 +1,237 @@
+/* =========================================================
+   APUNTES CSS: selectores, colores, cajas, diseño y responsive
+   ========================================================= */
+
+/* 1. Selector universal: afecta a todos los elementos */
+* {
+    box-sizing: border-box; /* width incluye contenido, padding y borde */
+}
+
+/* 2. Selector por etiqueta */
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #222222;
+    background-color: #f4f6f8;
+}
+
+/* 3. Selector por clase: .nombre-clase */
+.container {
+    width: min(100% - 32px, 1000px);
+    margin: 24px auto; /* arriba/abajo 24px; lados automáticos */
+}
+
+/* 4. Selector por id: #nombre-id */
+#texto {
+    border-left: 4px solid #1769aa;
+}
+
+/* 5. Selector descendiente: todos los a dentro de nav */
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+/* 6. Agrupar selectores con coma */
+h1, h2, h3 {
+    line-height: 1.2;
+}
+
+/* Cabecera */
+.site-header {
+    background: #243b55;
+    color: white;
+    padding: 24px;
+    text-align: center;
+}
+
+.site-header nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+/* Estados de enlace */
+a:hover {
+    text-decoration: underline;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid #f0b429;
+    outline-offset: 2px;
+}
+
+/* Modelo de caja */
+.card {
+    background-color: white;
+    padding: 20px;             /* espacio interior */
+    margin-bottom: 20px;       /* espacio exterior */
+    border: 1px solid #d5dbe1;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 5%);
+}
+
+/* Anchos y alturas */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+input, select, textarea, button {
+    font: inherit; /* heredar la tipografía */
+}
+
+/* Formularios */
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #aeb8c2;
+    border-radius: 5px;
+    background-color: white;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #1769aa;
+}
+
+/* Pseudoclases útiles */
+input:required {
+    border-left: 3px solid #1769aa;
+}
+
+input:disabled {
+    background-color: #eeeeee;
+    cursor: not-allowed;
+}
+
+/* Botones */
+button {
+    padding: 10px 16px;
+    color: white;
+    background-color: #1769aa;
+    border: 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #104d80;
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+button.secondary {
+    background-color: #5d6874;
+}
+
+/* Tablas */
+table {
+    width: 100%;
+    border-collapse: collapse; /* evita dobles bordes */
+    margin: 12px 0;
+}
+
+caption {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #d5dbe1;
+    text-align: left;
+}
+
+th {
+    background-color: #eaf0f5;
+}
+
+/* Pseudoclase: filas pares */
+tbody tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+/* Flexbox: útil para una dimensión */
+.flex-example {
+    display: flex;
+    flex-direction: row;      /* row o column */
+    justify-content: space-between; /* eje principal */
+    align-items: center;      /* eje transversal */
+    flex-wrap: wrap;          /* permitir salto de línea */
+    gap: 12px;
+}
+
+/* Grid: útil para filas y columnas */
+.grid-example {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+/* Posicionamiento */
+.position-parent {
+    position: relative; /* referencia para un hijo absolute */
+}
+
+.position-child {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+/* Unidades frecuentes:
+   px = píxeles; % = relativo al contenedor;
+   rem = relativo al tamaño base de fuente;
+   vw = porcentaje del ancho de ventana;
+   vh = porcentaje de la altura de ventana. */
+
+/* Responsive: aplicar estos estilos hasta 600px de ancho */
+@media (max-width: 600px) {
+    .container {
+        width: calc(100% - 20px);
+        margin: 10px auto;
+    }
+
+    .card {
+        padding: 14px;
+    }
+
+    .grid-example {
+        grid-template-columns: 1fr;
+    }
+
+    .site-header nav {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+/* Animaciones sencillas: usar con moderación */
+.button-transition {
+    transition: background-color 0.2s ease;
+}
+
+/* Evitar animaciones si el usuario lo prefiere */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
