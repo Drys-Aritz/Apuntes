@@ -1,4 +1,4 @@
-APUNTES DAW — HTML, CSS, JavaScript, PHP y SQL
+APUNTES DAW (Modelo Teorico) — HTML, CSS, JavaScript, PHP y SQL
 ================================================
 
 CONTENIDO
