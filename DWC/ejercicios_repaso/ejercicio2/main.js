@@ -1,5 +1,6 @@
 let opcionMenu = 0;
 let saldoActual = 100;
+let operacionesRealizadas = 0;
 
 
 //El programa debe mostrar un menú:
@@ -20,16 +21,15 @@ do {
             consultarSaldo();
             break;
         case "2":
-            console.log("Has entrado en la opción 2");
             ingresarDinero();
             break;
 
         case "3":
-            console.log("Has entrado en la opción 3");
+
             break;
 
         case "4":
-            console.log("Has entrado en la opción 4");
+
             break;
         case "5":
             opcionMenu = "exit";
@@ -43,12 +43,10 @@ do {
 //● Saldo actual.
 //● Número de operaciones realizadas.
 function consultarSaldo() {
-    let numeroOperaciones;
-
     console.log("Saldo actual: " + saldoActual + "€");
 
     //Número de operaciones realizadas
-
+    console.log("Número de operaciones realizadas: " + operacionesRealizadas);
 }
 
 //Ingresar dinero
@@ -63,6 +61,7 @@ function ingresarDinero() {
         cantidad = Number(prompt("Introducir cuanto dinero deseas ingresar:"));
         if (typeof cantidad === "number" && cantidad > 0) {
             saldoActual += cantidad;
+            operacionesRealizadas++;
         }
     } while (typeof cantidad !== "number" && cantidad <= 0);
 }
