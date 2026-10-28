@@ -1,0 +1,66 @@
+
+/* Estilo general de toda la página. */
+body {
+    /* Fuente utilizada en la aplicación. */
+    font-family: Arial, sans-serif;
+
+    /* Espacio exterior del contenido. */
+    margin: 30px;
+}
+
+/* Menú de navegación. */
+nav {
+    /* Separación respecto al contenido siguiente. */
+    margin-bottom: 25px;
+}
+
+/* Enlaces del menú. */
+nav a {
+    /* Separación entre enlaces. */
+    margin-right: 15px;
+}
+
+/* Tablas de catálogo y carrito. */
+table {
+    /* Une los bordes de las celdas. */
+    border-collapse: collapse;
+
+    /* Ocupa todo el ancho disponible. */
+    width: 100%;
+
+    /* Espacio encima de la tabla. */
+    margin-top: 20px;
+}
+
+/* Cabeceras y celdas de las tablas. */
+th, td {
+    /* Borde gris de un píxel. */
+    border: 1px solid #888;
+
+    /* Espacio interior. */
+    padding: 10px;
+
+    /* Alineación del contenido. */
+    text-align: left;
+}
+
+/* Campos y botones de formularios. */
+input, select, button {
+    /* Espacio interior. */
+    padding: 7px;
+
+    /* Separación exterior. */
+    margin: 5px;
+}
+
+/* Los formularios de acciones pueden
+   mostrarse junto a otros elementos. */
+form.accion {
+    display: inline-block;
+}
+
+/* El texto de los enlaces utiliza el
+   color de texto de la página. */
+a {
+    color: inherit;
+}

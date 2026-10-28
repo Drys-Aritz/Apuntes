@@ -1,0 +1,128 @@
+
+/* Configuración general de la página. */
+body {
+    font-family: Arial, sans-serif;
+    margin: 30px;
+    background-color: #f5f5f5;
+    color: #222;
+}
+
+/* Contenedor principal. */
+.contenedor {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Cabecera de la aplicación. */
+header {
+    background-color: #243447;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Título de la cabecera. */
+header h1 {
+    margin: 0;
+}
+
+/* Menú de navegación. */
+nav {
+    margin-top: 15px;
+}
+
+/* Enlaces del menú. */
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+/* Zona principal de contenido. */
+main {
+    background-color: white;
+    padding: 25px;
+    margin-top: 20px;
+    border-radius: 8px;
+}
+
+/* Formularios. */
+form {
+    margin-bottom: 20px;
+}
+
+/* Etiquetas de formularios. */
+label {
+    display: inline-block;
+    margin: 5px;
+}
+
+/* Campos y botones. */
+input, select, button {
+    padding: 8px;
+    margin: 5px;
+}
+
+/* Botones y enlaces con apariencia de botón. */
+button, .boton {
+    background-color: #1769aa;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 9px 14px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* Tabla de videojuegos. */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+/* Cabeceras y celdas. */
+th, td {
+    padding: 12px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+/* Cabecera de la tabla. */
+th {
+    background-color: #e8edf2;
+}
+
+/* Filas alternas para facilitar la lectura. */
+tbody tr:nth-child(even) {
+    background-color: #f7f9fb;
+}
+
+/* Mensajes informativos. */
+.mensaje {
+    padding: 12px;
+    background-color: #e8f3ff;
+    border: 1px solid #a5cbee;
+    border-radius: 4px;
+}
+
+/* Mensajes de error. */
+.error {
+    padding: 12px;
+    background-color: #ffe9e9;
+    border: 1px solid #e8aaaa;
+    border-radius: 4px;
+}
+
+/* Información de un videojuego. */
+.detalle {
+    line-height: 2;
+}
+
+/* Pie de página. */
+footer {
+    text-align: center;
+    margin-top: 20px;
+    color: #666;
+}
