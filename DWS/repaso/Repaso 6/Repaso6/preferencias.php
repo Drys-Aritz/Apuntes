@@ -17,10 +17,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // - Validar que el tema sea uno de los permitidos.
                 // - Crear ambas cookies con duración de 7 días.
                 // - Redirigir a preferencias.php.
-                $nombre = trim($_POST["nombre"]);
+                $nombreUsuario = trim($_POST["nombre"]);
                 $tema = $_POST["tema"];
                 if (!empty($nombre)) {
-                    setcookie("nombre", $nombre, time() + (60 * 60 * 24 * 7));
+                    setcookie("nombreUsuario", $nombreUsuario, time() + (60 * 60 * 24 * 7));
                 }
                 if ($tema == "claro" || $tema == "oscuro") {
                     setcookie("tema", $tema, time() + (60 * 60 * 24 * 7));
@@ -33,8 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // Si la acción es "eliminarNombre":
                 // - Eliminar la cookie nombreUsuario.
                 // - Redirigir a preferencias.php.
-                $nombreUsuario = trim($_POST["nombreUsuario"]);
-                setcookie($nombreUsuario, "nombreUsuario", time() - 3600);
+                setcookie("nombreUsuario", " ", time() - 3600);
                 header("Location: preferencias.php");
                 exit;
 
@@ -42,22 +41,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // Si la acción es "eliminarTema":
                 // - Eliminar la cookie tema.
                 // - Redirigir a preferencias.php.
-                case "eliminarTema":
-                $eliminarTema = trim($_POST["eliminarTema"]);
-                setcookie($eliminarTema, "eliminarTema", time() - 3600);
+            case "eliminarTema":
+                setcookie("tema", " ", time() - 3600);
                 header("Location: preferencias.php");
                 exit;
                 // TODO 5:
                 // Si la acción es "eliminarTodo":
                 // - Eliminar las dos cookies.
                 // - Redirigir a preferencias.php.
-
+            case "eliminarTodo":
+                setcookie("nombreUsuario", " ", time() - 3600);
+                setcookie("tema", " ", time() - 3600);
+                header("Location: preferencias.php");
+                exit;
         }
     }
 }
 // TODO 6:
 // Recuperar los valores actuales de las cookies
 // para poder mostrarlos debajo del formulario.
+$nombre = $_COOKIE["nombreUsuario"] ?? "";
+$tema = $_COOKIE["tema"] ?? "";
 
 ?>
 
@@ -163,7 +167,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Si no existe, indicar que se utiliza el tema claro.
     //
     // Utilizar htmlspecialchars() al mostrar el nombre.
-
+    $temas = ["claro", "oscuro"];
+    $tema = $_COOKIE["tema"] ?? "claro";
+    if (!in_array($tema, $temas)) {
+        $tema = "claro";
+    }
+    if (!empty($nombre)) {
+        echo "Bienvenido/a, " . htmlspecialchars($nombre, ENT_QUOTES, 'UTF-8');
+    } else {
+        echo "No hay nombre guardado";
+    }
     ?>
 
 </body>

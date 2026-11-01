@@ -12,6 +12,7 @@ $nombre = $_COOKIE["nombreUsuario"] ?? "";
 // Recuperar el tema guardado en la cookie.
 // Comprobar que pertenece al array $temas.
 // Si no existe o no es válido, utilizar "claro".
+$temas = ["claro", "oscuro"];
 $tema = $_COOKIE["tema"] ?? "claro";
 if (!in_array($tema, $temas)) {
     $tema = "claro";
@@ -75,8 +76,8 @@ if ($tema == "claro") {
     // "Bienvenido/a a GameWorld".
     //
     // Utilizar htmlspecialchars() para mostrar el nombre.
-    if (!empty($nombre)){
-        echo "Bienvenido/a, " . $nombre;
+  if (!empty($nombre)){
+        echo "Bienvenido/a, " . htmlspecialchars($nombre, ENT_QUOTES, 'UTF-8');
     } else {
         echo "Bienvenido/a a GameWorld";
     }

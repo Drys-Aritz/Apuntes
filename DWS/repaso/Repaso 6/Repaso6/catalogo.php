@@ -1,33 +1,51 @@
-
 <?php
 
 // Cargamos el array de videojuegos y la configuración.
-require_once "includes/datos.php";
+require_once __DIR__ . "/includes/datos.php";
 
 // TODO 1:
 // Iniciar o recuperar la sesión.
-
+session_start();
 
 // TODO 2:
 // Si no existe $_SESSION["carrito"],
 // crear un array vacío.
-
+if (!isset($_SESSION["carrito"])) {
+    $_SESSION["carrito"] = [];
+}
 
 // TODO 3:
 // Comprobar si se ha recibido la acción "anadir"
 // mediante el formulario POST.
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST["accion"]) && $_POST["accion"] == "anadir") {
+
+        // TODO 4:
+        // Recuperar el ID enviado.
+        // Comprobar que existe en $videojuegos.
+        // Comprobar que tiene stock.
+        $id = $_POST["id"];
+        $videojuegos = [];
+        foreach ($videojuegos as $idVideojuego => $videojuego) {
+            if ($idVideojuego == $id) {
 
 
-// TODO 4:
-// Recuperar el ID enviado.
-// Comprobar que existe en $videojuegos.
-// Comprobar que tiene stock.
+                // TODO 5:
+                // Añadir una unidad al carrito.
+                // Si ya existe, aumentar su cantidad.
+                // No permitir superar el stock disponible.
+                $carrito = $_POST["carrito"];
+                
 
 
-// TODO 5:
-// Añadir una unidad al carrito.
-// Si ya existe, aumentar su cantidad.
-// No permitir superar el stock disponible.
+
+                if ($videojuego["stock"] > 0) {
+
+                }
+            }
+        }
+    }
+}
 
 ?>
 
@@ -98,4 +116,5 @@ require_once "includes/datos.php";
     </table>
 
 </body>
+
 </html>
