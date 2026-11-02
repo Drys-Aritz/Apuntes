@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejercicio 4 - Validación de formulario</title>
+  <script src="validacion.js" defer></script>
+</head>
+<body>
+  <h1>Añadir zapatilla</h1>
+  <form id="formulario">
+    <label>Nombre: <input type="text" id="nombre"></label><br>
+    <label>Marca: <input type="text" id="marca"></label><br>
+    <label>Precio: <input type="text" id="precio"></label><br>
+    <label>Categoría:
+      <select id="categoria">
+        <option value="">--Selecciona--</option>
+        <option value="Running">Running</option>
+        <option value="Casual">Casual</option>
+        <option value="Baloncesto">Baloncesto</option>
+      </select>
+    </label><br>
+    <button type="submit" id="validar">Validar</button>
+  </form>
+  <div id="mensaje"></div>
+</body>
+</html>

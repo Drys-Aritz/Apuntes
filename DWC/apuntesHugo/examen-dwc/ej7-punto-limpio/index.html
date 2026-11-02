@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8"><title>Punto limpio</title>
+<style>.amarillo{background:#ffe97a}.azul{background:#9ec9ff}.marron{background:#c9a27a}.verde{background:#a8e6a1}.gris{background:#ccc}</style>
+</head><body>
+  <div id="contenedores">
+    Amarillo <input type="text" id="amarillo" value="0" readonly>
+    Azul <input type="text" id="azul" value="0" readonly>
+    Marrón <input type="text" id="marron" value="0" readonly>
+    Verde <input type="text" id="verde" value="0" readonly>
+    Gris <input type="text" id="gris" value="0" readonly>
+  </div>
+  <form id="formDescarga">
+    <input type="text" id="nombre" placeholder="Nombre">
+    <input type="text" id="kg" placeholder="Kg">
+    <select id="contenedor">
+      <option value="Amarillo">Envases</option>
+      <option value="Azul">Papel</option>
+      <option value="Marron">Orgánico</option>
+      <option value="Verde">Vidrio</option>
+      <option value="Gris">Resto</option>
+    </select>
+    <button type="submit">Descargar</button>
+  </form>
+  <div id="descargas"></div>
+  <script src="descarga.js"></script>
+  <script src="array.js"></script>
+  <script src="validar.js"></script>
+  <script src="pintar.js"></script>
+  <script src="script.js"></script>
+</body></html>

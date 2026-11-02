@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8"><title>Ej8 Corregir</title></head>
+<body>
+  <form id="formulario">
+    <input type="text" id="nombre" placeholder="Nombre">
+    <input type="text" id="edad" placeholder="Edad">
+    <input type="text" id="email" placeholder="Email">
+    <button type="button" id="validar">Validar</button>
+    <button type="button" id="reset">Reset</button>
+  </form>
+  <div id="errores"></div>
+  <div id="inferior" style="display:none">
+    <select id="actividad">
+      <option value="">-- Actividad --</option>
+      <option value="riesgo">Escalada (riesgo)</option>
+      <option value="normal">Lectura</option>
+    </select>
+    <p id="resultado"></p>
+  </div>
+  <!-- Para practicar: cambia src a "buggy.js", arréglalo SIN tocar el HTML y compara con solucion.js -->
+  <script src="solucion.js"></script>
+</body></html>

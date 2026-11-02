@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guía de examen DWC — plantillas para copiar y pegar</title>
+<style>
+  body{font-family:Arial,sans-serif;max-width:900px;margin:30px auto;padding:0 20px;line-height:1.6;color:#222}
+  h1{font-size:26px;border-bottom:2px solid #333;padding-bottom:8px}
+  h2{font-size:20px;margin-top:30px;border-left:4px solid #0f4c81;padding-left:10px}
+  h3{font-size:16px;margin-top:20px}
+  p,li{font-size:15px}
+  .tag{display:inline-block;font-size:11px;font-weight:bold;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:20px;background:#e8f0f7;color:#0f4c81;margin-right:6px}
+  pre{background:#f4f3ef;border:1px solid #e4e2dc;border-radius:6px;padding:12px;overflow-x:auto;margin:10px 0}
+  code{font-family:"Cascadia Mono",Consolas,monospace;font-size:.9em;background:#e9e7e1;padding:1px 5px;border-radius:4px;white-space:nowrap}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+  th,td{border:1px solid #ccc;padding:7px 10px;text-align:left}
+  th{background:#f1efe9}
+  .box{border-left:4px solid #0f4c81;background:#e8f0f7;padding:10px 14px;margin:12px 0;border-radius:0 8px 8px 0}
+  .box.bad{border-left-color:#a12020;background:#fbeaea}
+  .box p{margin:3px 0}
+  .small{font-size:13px;color:#5b5b66}
+</style>
+</head>
+<body>
+
+<h1>Guía de examen DWC — qué te van a pedir y cómo se hace</h1>
+<p>Esto es para copiar y pegar. Cinco apartados que caen siempre. Cambia los nombres y los <code>id</code> si el HTML que te dan varía.</p>
+
+<h2><span class="tag">01</span>Arrays de objetos</h2>
+<p>Te dan un array de objetos y te piden cuatro funciones: mayúsculas, filtrar por categoría, buscar por título (sin distinguir mayúsculas) y media.</p>
+
+<pre><code>let peliculas = [
+  { titulo: "Matrix", director: "Wachowski", anio: 1999, categoria: "Ciencia Ficción", valoracion: 8.7 },
+  { titulo: "El Padrino", director: "Coppola", anio: 1972, categoria: "Drama", valoracion: 9.2 },
+  { titulo: "Inception", director: "Nolan", anio: 2010, categoria: "Ciencia Ficción", valoracion: 8.8 }
+];
+
+// 1. Muestra títulos en mayúsculas por consola (no devuelve nada)
+function mayusculas() {
+  for (let i = 0; i < peliculas.length; i++) {
+    console.log(peliculas[i].titulo.toUpperCase());
+  }
+}
+
+// 2. Devuelve un array nuevo con las películas de esa categoría
+function peliculasPorCategoria(categoria) {
+  let resultado = [];
+  for (let i = 0; i < peliculas.length; i++) {
+    if (peliculas[i].categoria === categoria) {
+      resultado.push(peliculas[i]);
+    }
+  }
+  return resultado;   // [] si no hay ninguna
+}
+
+// 3. Devuelve películas cuyo título contenga el texto (sin distinguir mayúsculas)
+function buscarPorTitulo(texto) {
+  let resultado = [];
+  for (let i = 0; i < peliculas.length; i++) {
+    if (peliculas[i].titulo.toLowerCase().includes(texto.toLowerCase())) {
+      resultado.push(peliculas[i]);   // la película, NO el título
+    }
+  }
+  return resultado;
+}
+
+// 4. Devuelve la media de las valoraciones
+function mediaValoraciones() {
+  let suma = 0;
+  for (let i = 0; i < peliculas.length; i++) {
+    suma += peliculas[i].valoracion;
+  }
+  return suma / peliculas.length;
+}
+
+// Pruebas:
+// console.log(peliculasPorCategoria("Drama"));
+// console.log(buscarPorTitulo("inception"));
+// console.log(mediaValoraciones());
+</code></pre>
+
+<div class="box bad">
+  <p><b>Errores que restan puntos:</b> devolver un string tipo "No hay películas" en vez de <code>[]</code>; usar <code>console.log</code> dentro de una función que debe devolver; hacer <code>resultado.push(p.titulo)</code> en vez de <code>resultado.push(p)</code>.</p>
+</div>
+
+<h2><span class="tag">02</span>Objetos y clases</h2>
+<p>Te piden una clase con constructor, un método <code>mostrar()</code> que devuelve una frase exacta, dos objetos, un array y recorrerlo por consola.</p>
+
+<pre><code>class Pelicula {
+  constructor(titulo, director, anio, categoria, valoracion) {
+    this.titulo = titulo;
+    this.director = director;
+    this.anio = anio;
+    this.categoria = categoria;
+    this.valoracion = valoracion;
+  }
+
+  mostrar() {
+    return `${this.titulo} (${this.anio}), dirigida por ${this.director}, en la categoría de ${this.categoria}`;
+  }
+}
+
+// Dos objetos
+let p1 = new Pelicula("Matrix", "Wachowski", 1999, "Ciencia Ficción", 8.7);
+let p2 = new Pelicula("El Padrino", "Coppola", 1972, "Drama", 9.2);
+
+let coleccion = [p1, p2];
+
+for (let i = 0; i < coleccion.length; i++) {
+  console.log(coleccion[i].mostrar());
+}
+</code></pre>
+
+<div class="box">
+  <p><b>Getters y setters:</b> si el enunciado pide get/set estándares, usa <code>get color() { return this._color; }</code> y <code>set color(v) { this._color = v; }</code>. Se usan sin paréntesis: <code>d.color</code>.</p>
+</div>
+
+<h2><span class="tag">03</span>DOM y eventos</h2>
+<p>Botón que recorre el array y crea <code>&lt;li&gt;</code> con <code>createElement</code> + <code>textContent</code> + <code>appendChild</code> (nunca <code>innerHTML</code>). Efecto hover: negrita al entrar, normal al salir.</p>
+
+<pre><code>&lt;!-- En el HTML --&gt;
+&lt;script src="dom.js" defer&gt;&lt;/script&gt;
+&lt;button id="btnMostrar"&gt;Mostrar&lt;/button&gt;
+&lt;ul id="lista"&gt;&lt;/ul&gt;
+</code></pre>
+
+<pre><code>const boton = document.getElementById("btnMostrar");
+const ul = document.getElementById("lista");
+
+boton.addEventListener("click", function () {
+  while (ul.firstChild) ul.removeChild(ul.firstChild);   // no duplicar
+
+  for (let i = 0; i < peliculas.length; i++) {
+    let li = document.createElement("li");
+    li.textContent = peliculas[i].titulo;
+
+    li.addEventListener("mouseover", function () {
+      li.style.fontWeight = "bold";
+    });
+    li.addEventListener("mouseout", function () {
+      li.style.fontWeight = "normal";
+    });
+
+    ul.appendChild(li);
+  }
+});
+</code></pre>
+
+<div class="box bad">
+  <p><b>Ojo:</b> el <code>&lt;script&gt;</code> necesita <code>defer</code> o ir al final del <code>&lt;body&gt;</code>, o todo da <code>null</code>. Para saber qué <code>li</code> recibió el evento usa <code>e.target</code>, no <code>querySelector("li")</code> (siempre coge el primero).</p>
+</div>
+
+<h2><span class="tag">04</span>Validación de formularios</h2>
+<p>Escuchar el <code>submit</code>, <code>e.preventDefault()</code> siempre, validar con regex y escribir en un <code>div</code>.</p>
+
+<pre><code>const form = document.getElementById("formPelicula");
+const mensaje = document.getElementById("mensaje");
+
+const reTexto = /^[a-záéíóúñü\s]{3,50}$/i;   // letras, acentos y espacios, 3-50
+const reAnio  = /^(19|20)\d{2}$/;             // 1900-2099
+
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  let titulo   = document.getElementById("titulo").value.trim();
+  let director = document.getElementById("director").value.trim();
+  let anio     = document.getElementById("anio").value.trim();
+  let categoria = document.getElementById("categoria").value;
+
+  let errores = [];
+  if (!reTexto.test(titulo))   errores.push("Título: 3-50 letras.");
+  if (!reTexto.test(director)) errores.push("Director: 3-50 letras.");
+  if (!reAnio.test(anio))      errores.push("Año: 1900-2099.");
+  if (categoria === "")        errores.push("Elige categoría.");
+
+  if (errores.length > 0) {
+    mensaje.textContent = errores.join(" · ");
+    mensaje.style.color = "red";
+  } else {
+    mensaje.textContent = "Película validada correctamente";
+    mensaje.style.color = "green";
+  }
+});
+</code></pre>
+
+<div class="box">
+  <p><b>Regex lista para copiar:</b></p>
+  <ul>
+    <li>Texto 3-50 letras (con acentos y espacios): <code>/^[a-záéíóúñü\s]{3,50}$/i</code></li>
+    <li>Año 1900-2099 (4 cifras): <code>/^(19|20)\d{2}$/</code></li>
+  </ul>
+</div>
+
+<h2><span class="tag">05</span>Web Storage (localStorage)</h2>
+<p>Guardar un nombre, mostrar "Bienvenido de nuevo, X", ocultar el formulario, botón de cerrar sesión.</p>
+
+<pre><code>const form = document.getElementById("formUsuario");
+const bienvenida = document.getElementById("bienvenida");
+const cerrar = document.getElementById("cerrarSesion");
+
+function pintar() {
+  const usuario = localStorage.getItem("usuario");
+
+  if (usuario) {
+    form.style.display = "none";
+    bienvenida.textContent = "Bienvenido de nuevo, " + usuario;
+    cerrar.hidden = false;
+  } else {
+    form.style.display = "block";
+    bienvenida.textContent = "";
+    cerrar.hidden = true;
+  }
+}
+
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+  const usuario = document.getElementById("nombreUsuario").value.trim();
+  if (usuario !== "") {
+    localStorage.setItem("usuario", usuario);
+    pintar();
+  }
+});
+
+cerrar.addEventListener("click", function () {
+  localStorage.removeItem("usuario");
+  pintar();
+});
+
+pintar();   // al cargar
+</code></pre>
+
+<div class="box">
+  <p><b>Cuatro instrucciones que vale saber:</b></p>
+  <ul>
+    <li><code>localStorage.setItem("clave", valor)</code> — guardar</li>
+    <li><code>localStorage.getItem("clave")</code> — leer (devuelve <code>null</code> si no existe)</li>
+    <li><code>localStorage.removeItem("clave")</code> — borrar una</li>
+    <li><code>JSON.stringify(obj)</code> y <code>JSON.parse(str)</code> — para guardar objetos o arrays</li>
+  </ul>
+</div>
+
+<h2>Errores que más puntos cuestan</h2>
+<table>
+  <thead><tr><th>Síntoma</th><th>Causa</th><th>Solución</th></tr></thead>
+  <tbody>
+    <tr><td><code>Cannot read properties of null</code></td><td>Script antes del HTML o <code>id</code> mal escrito</td><td><code>defer</code> en el <code>&lt;script&gt;</code></td></tr>
+    <tr><td>La página se recarga al enviar</td><td>Falta <code>e.preventDefault()</code></td><td>Primera línea del <code>submit</code></td></tr>
+    <tr><td>Función que debe devolver y no devuelve</td><td>Falta <code>return</code></td><td>Añadir <code>return</code></td></tr>
+    <tr><td>Hover solo en el primer elemento</td><td><code>querySelector("li")</code> siempre coge el primero</td><td>Usa <code>e.target</code></td></tr>
+    <tr><td>Se duplican los elementos al pulsar dos veces</td><td>No vacías la lista antes de pintar</td><td><code>while (ul.firstChild) ul.removeChild(ul.firstChild);</code></td></tr>
+  </tbody>
+</table>
+
+<p class="small">Antes de entregar: abre la consola (F12), prueba cada ejercicio con un caso correcto y uno incorrecto, y asegúrate de que no hay errores en rojo.</p>
+
+</body>
+</html>

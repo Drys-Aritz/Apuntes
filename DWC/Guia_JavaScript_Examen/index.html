@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guía visual de JavaScript · Preparación del examen</title>
+<style>
+:root{
+ --bg:#f5f7fb;--surface:#fff;--ink:#243044;--muted:#64748b;--line:#e2e8f0;
+ --accent:#315bd6;--accent-soft:#eaf0ff;--green:#16794b;--code:#f1f4f8;
+ --shadow:0 8px 28px rgba(25,42,70,.07)
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{background:linear-gradient(120deg,#fff 10%,#edf3ff);border-bottom:1px solid var(--line);padding:34px 24px}
+.hero{max-width:1180px;margin:auto}
+.eyebrow{color:var(--accent);font-weight:750;text-transform:uppercase;letter-spacing:.08em;font-size:.78rem}
+h1{font-size:clamp(2rem,4vw,3.2rem);line-height:1.12;margin:.4rem 0}
+header p{max-width:720px;color:var(--muted);font-size:1.05rem;margin-bottom:0}
+.layout{max-width:1180px;margin:26px auto;padding:0 20px;display:grid;grid-template-columns:250px minmax(0,1fr);gap:24px}
+nav{position:sticky;top:16px;align-self:start;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow);max-height:calc(100vh - 32px);overflow:auto}
+nav strong{display:block;margin:0 0 10px}
+nav a{display:block;text-decoration:none;color:#40516b;padding:8px 10px;border-radius:9px;font-size:.94rem}
+nav a:hover{background:var(--accent-soft);color:var(--accent)}
+main{min-width:0}
+section{background:var(--surface);border:1px solid var(--line);border-radius:17px;padding:clamp(18px,3vw,30px);margin-bottom:20px;box-shadow:var(--shadow);scroll-margin-top:18px}
+h2{font-size:1.65rem;margin:0 0 8px;line-height:1.25}
+h3{font-size:1.13rem;margin:24px 0 8px}
+p{margin:8px 0 14px}
+.lead{color:var(--muted);margin-top:0}
+.pill{display:inline-block;background:var(--accent-soft);color:var(--accent);border-radius:999px;padding:3px 10px;font-size:.78rem;font-weight:700;margin-bottom:12px}
+.tip{background:#f0f8f4;border-left:4px solid #32a36c;padding:12px 15px;border-radius:8px;margin:14px 0}
+.warn{background:#fff8e8;border-left:4px solid #e5a52e;padding:12px 15px;border-radius:8px;margin:14px 0}
+pre{background:var(--code);color:#263449;border:1px solid #dce3ed;border-radius:12px;padding:17px;overflow:auto;font: .91rem/1.6 ui-monospace,SFMono-Regular,Consolas,monospace;position:relative;white-space:pre}
+code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
+:not(pre)>code{background:#eef2f7;color:#294b91;padding:2px 5px;border-radius:5px}
+table{width:100%;border-collapse:collapse;margin:12px 0 18px;font-size:.94rem}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:#f5f7fb;color:#40516b}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+.card{border:1px solid var(--line);border-radius:12px;padding:14px;background:#fff}
+.card b{display:block;margin-bottom:4px}
+.muted{color:var(--muted)}
+button.copy{float:right;border:1px solid #cbd5e1;background:#fff;color:#40516b;border-radius:7px;padding:4px 9px;cursor:pointer;font-size:.78rem}
+button.copy:hover{background:var(--accent-soft);color:var(--accent)}
+.search{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:9px;margin:8px 0 12px;font:inherit}
+footer{text-align:center;color:var(--muted);padding:15px 20px 40px}
+@media(max-width:800px){.layout{grid-template-columns:1fr}nav{position:static;max-height:none;display:grid;grid-template-columns:1fr 1fr}nav strong,.search{grid-column:1/-1}}
+@media(max-width:480px){nav{grid-template-columns:1fr}section{padding:18px}pre{font-size:.82rem}}
+@media print{body{background:white}.layout{display:block}nav{display:none}section{box-shadow:none;break-inside:avoid}header{padding:15px}}
+</style>
+</head>
+<body>
+<header><div class="hero">
+<div class="eyebrow">Apuntes de examen · JavaScript</div>
+<h1>Guía visual para estudiar JavaScript</h1>
+<p>Explicaciones claras, ejemplos comentados, alternativas que pueden aparecer en el examen y ejercicios para practicar. Todo en una página, con fondo claro y código fácil de leer.</p>
+</div></header>
+<div class="layout">
+<nav>
+<strong>Contenido</strong>
+<input class="search" id="buscador" placeholder="Buscar en la guía…">
+<a href="#como">Cómo usar la guía</a>
+<a href="#arrays">1 · Arrays</a>
+<a href="#clases">2 · Clases y objetos</a>
+<a href="#dom">3 · DOM y eventos</a>
+<a href="#formularios">4 · Formularios</a>
+<a href="#storage">5 · Web Storage</a>
+<a href="#chuleta">Chuleta rápida</a>
+<a href="#simulacro">Simulacro de examen</a>
+<a href="#errores">Errores frecuentes</a>
+</nav>
+<main id="contenido">
+<section id="como">
+<span class="pill">Antes de empezar</span><h2>Cómo estudiar con esta guía</h2>
+<p class="lead">No memorices líneas sin entenderlas. Aprende a reconocer qué herramienta pide cada enunciado.</p>
+<div class="grid">
+<div class="card"><b>1. Identifica los datos</b><span class="muted">¿Tienes un array, una clase, un formulario o elementos HTML?</span></div>
+<div class="card"><b>2. Identifica la acción</b><span class="muted">¿Te piden buscar, mostrar, validar, guardar o eliminar?</span></div>
+<div class="card"><b>3. Elige la estructura</b><span class="muted">Función, recorrido, condición, evento o clase.</span></div>
+<div class="card"><b>4. Prueba dos casos</b><span class="muted">Uno que cumpla la condición y otro que no.</span></div>
+</div>
+<div class="tip"><b>Consejo:</b> intenta primero los ejercicios del final sin consultar los ejemplos. Después vuelve aquí para comprobar qué método o estructura te faltaba.</div>
+</section>
+
+<section id="arrays">
+<span class="pill">Bloque 1</span><h2>Arrays: métodos y alternativas</h2>
+<p class="lead">Un array almacena varios elementos. En los ejercicios suelen ser objetos con propiedades.</p>
+<pre><button class="copy">Copiar</button><code>const productos = [
+  { nombre: "Teclado", precio: 35, stock: 4 },
+  { nombre: "Taza", precio: 8, stock: 12 },
+  { nombre: "Ratón", precio: 18, stock: 0 }
+];</code></pre>
+<h3>Recorrer: forEach()</h3><p>Ejecuta una acción para cada elemento. No devuelve un array nuevo.</p>
+<pre><button class="copy">Copiar</button><code>productos.forEach(function(producto) {
+  console.log(producto.nombre);
+});</code></pre>
+<h3>Filtrar varios: filter()</h3><p>Devuelve un array nuevo con todos los elementos que cumplen la condición.</p>
+<pre><button class="copy">Copiar</button><code>function productosBaratos() {
+  return productos.filter(function(producto) {
+    return producto.precio &lt; 20;
+  });
+}</code></pre>
+<h3>Buscar el primero: find()</h3><p>Devuelve el primer elemento que coincide o <code>undefined</code> si no encuentra ninguno.</p>
+<pre><button class="copy">Copiar</button><code>const raton = productos.find(function(producto) {
+  return producto.nombre === "Ratón";
+});</code></pre>
+<h3>Transformar: map()</h3><p>Crea un array nuevo con el resultado de transformar cada elemento.</p>
+<pre><button class="copy">Copiar</button><code>const nombres = productos.map(function(producto) {
+  return producto.nombre;
+});</code></pre>
+<h3>Acumular: reduce()</h3><p>Sirve para sumar precios, calcular medias, contar o acumular resultados.</p>
+<pre><button class="copy">Copiar</button><code>const total = productos.reduce(function(suma, producto) {
+  return suma + producto.precio;
+}, 0);</code></pre>
+<h3>Comprobar: some() y every()</h3>
+<pre><button class="copy">Copiar</button><code>// ¿Algún producto está agotado?
+const hayAgotados = productos.some(function(producto) {
+  return producto.stock === 0;
+});
+
+// ¿Todos tienen precio positivo?
+const preciosCorrectos = productos.every(function(producto) {
+  return producto.precio &gt; 0;
+});</code></pre>
+<h3>Ordenar: sort()</h3>
+<pre><button class="copy">Copiar</button><code>// De menor a mayor precio. Modifica el array original.
+productos.sort(function(a, b) {
+  return a.precio - b.precio;
+});
+
+// De mayor a menor:
+// productos.sort((a, b) =&gt; b.precio - a.precio);</code></pre>
+<table><tr><th>Método</th><th>Devuelve</th><th>Uso típico</th></tr>
+<tr><td><code>forEach</code></td><td>Nada útil (undefined)</td><td>Recorrer y ejecutar acciones</td></tr>
+<tr><td><code>filter</code></td><td>Array</td><td>Todos los que cumplen</td></tr>
+<tr><td><code>find</code></td><td>Elemento o undefined</td><td>El primero que coincide</td></tr>
+<tr><td><code>map</code></td><td>Array</td><td>Transformar elementos</td></tr>
+<tr><td><code>reduce</code></td><td>Acumulado</td><td>Sumar o calcular</td></tr>
+<tr><td><code>some / every</code></td><td>true o false</td><td>Alguno / todos cumplen</td></tr>
+<tr><td><code>sort</code></td><td>Array ordenado</td><td>Ordenar; modifica el original</td></tr></table>
+<div class="tip"><b>Pista de examen:</b> «devuelve todos» suele indicar <code>filter</code>; «el primero» indica <code>find</code>; «un array con los nombres» indica <code>map</code>; «la suma» indica <code>reduce</code>.</div>
+</section>
+
+<section id="clases">
+<span class="pill">Bloque 2</span><h2>Clases y objetos</h2>
+<p class="lead">Una clase es una plantilla. Con <code>new</code> creas objetos concretos a partir de ella.</p>
+<h3>Patrón básico</h3>
+<pre><button class="copy">Copiar</button><code>class Libro {
+  constructor(titulo, autor, paginas) {
+    this.titulo = titulo;
+    this.autor = autor;
+    this.paginas = paginas;
+  }
+
+  descripcion() {
+    return `${this.titulo}, de ${this.autor}, tiene ${this.paginas} páginas.`;
+  }
+}
+
+const libro1 = new Libro("Libro A", "Autora A", 120);
+console.log(libro1.descripcion());</code></pre>
+<h3>Variante A · Método que devuelve true o false</h3>
+<pre><button class="copy">Copiar</button><code>class Alumno {
+  constructor(nombre, nota) {
+    this.nombre = nombre;
+    this.nota = nota;
+  }
+
+  estaAprobado() {
+    return this.nota &gt;= 5;
+  }
+}
+
+const alumno = new Alumno("Ane", 8);
+console.log(alumno.estaAprobado()); // true</code></pre>
+<h3>Variante B · Método que modifica una propiedad</h3>
+<pre><button class="copy">Copiar</button><code>class Cuenta {
+  constructor(titular, saldo) {
+    this.titular = titular;
+    this.saldo = saldo;
+  }
+
+  ingresar(cantidad) {
+    if (cantidad &gt; 0) {
+      this.saldo += cantidad;
+    }
+  }
+
+  retirar(cantidad) {
+    if (cantidad &gt; 0 &amp;&amp; cantidad &lt;= this.saldo) {
+      this.saldo -= cantidad;
+    }
+  }
+}</code></pre>
+<h3>Variante C · Método que calcula</h3>
+<pre><button class="copy">Copiar</button><code>class Rectangulo {
+  constructor(ancho, alto) {
+    this.ancho = ancho;
+    this.alto = alto;
+  }
+
+  calcularArea() {
+    return this.ancho * this.alto;
+  }
+
+  esCuadrado() {
+    return this.ancho === this.alto;
+  }
+}</code></pre>
+<div class="tip"><b>Recuerda:</b> clase = plantilla; objeto = instancia; propiedad = dato; método = función de la clase; <code>this</code> = el objeto actual.</div>
+</section>
+
+<section id="dom">
+<span class="pill">Bloque 3</span><h2>DOM y eventos</h2>
+<p class="lead">El DOM permite seleccionar y modificar elementos de la página desde JavaScript.</p>
+<h3>Patrón básico: seleccionar y escuchar un clic</h3>
+<pre><button class="copy">Copiar</button><code>const boton = document.getElementById("accion");
+const resultado = document.getElementById("resultado");
+
+boton.addEventListener("click", function() {
+  resultado.textContent = "Has pulsado el botón";
+});</code></pre>
+<h3>Variante A · Cambiar una clase CSS</h3>
+<pre><button class="copy">Copiar</button><code>const tarjeta = document.getElementById("tarjeta");
+
+tarjeta.addEventListener("click", function() {
+  tarjeta.classList.toggle("seleccionada");
+});</code></pre>
+<h3>Variante B · Mostrar u ocultar</h3>
+<pre><button class="copy">Copiar</button><code>boton.addEventListener("click", function() {
+  if (panel.style.display === "none") {
+    panel.style.display = "block";
+  } else {
+    panel.style.display = "none";
+  }
+});</code></pre>
+<h3>Variante C · Eliminar un elemento</h3>
+<pre><button class="copy">Copiar</button><code>botonEliminar.addEventListener("click", function() {
+  elemento.remove();
+});</code></pre>
+<h3>Variante D · Reaccionar mientras se escribe</h3>
+<pre><button class="copy">Copiar</button><code>campo.addEventListener("input", function() {
+  resultado.textContent = campo.value;
+});</code></pre>
+<h3>Variante E · Reaccionar al cambiar un select</h3>
+<pre><button class="copy">Copiar</button><code>selector.addEventListener("change", function() {
+  salida.textContent = selector.value;
+});</code></pre>
+<h3>Crear una lista desde un array</h3>
+<pre><button class="copy">Copiar</button><code>const tareas = ["Estudiar", "Leer", "Practicar"];
+const lista = document.getElementById("lista");
+
+tareas.forEach(function(tarea) {
+  const li = document.createElement("li");
+  li.textContent = tarea;
+  lista.append(li);
+});</code></pre>
+<table><tr><th>Instrucción</th><th>Para qué sirve</th></tr>
+<tr><td><code>getElementById()</code></td><td>Selecciona un elemento por su id.</td></tr>
+<tr><td><code>querySelectorAll()</code></td><td>Selecciona todos los elementos que coinciden con un selector CSS.</td></tr>
+<tr><td><code>createElement()</code></td><td>Crea un elemento HTML.</td></tr>
+<tr><td><code>append()</code></td><td>Añade un elemento al final de otro.</td></tr>
+<tr><td><code>remove()</code></td><td>Elimina un elemento.</td></tr>
+<tr><td><code>classList.toggle()</code></td><td>Añade o quita una clase CSS.</td></tr></table>
+<div class="warn"><b>Importante:</b> si el script está en el <code>&lt;head&gt;</code>, utiliza <code>&lt;script src="archivo.js" defer&gt;&lt;/script&gt;</code>. Si creas un elemento dentro de un <code>forEach</code>, coloca sus eventos dentro del mismo recorrido.</div>
+</section>
+
+<section id="formularios">
+<span class="pill">Bloque 4</span><h2>Formularios y validación</h2>
+<p class="lead">Lee los valores, comprueba las condiciones y muestra errores o confirmación.</p>
+<h3>Plantilla general</h3>
+<pre><button class="copy">Copiar</button><code>const formulario = document.getElementById("miFormulario");
+
+formulario.addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const campo = document.getElementById("campo");
+  const mensaje = document.getElementById("mensaje");
+  const valor = campo.value.trim();
+
+  mensaje.textContent = "";
+
+  if (valor === "") {
+    mensaje.textContent = "El campo es obligatorio";
+    mensaje.style.color = "red";
+  } else {
+    mensaje.textContent = "Correcto";
+    mensaje.style.color = "green";
+  }
+});</code></pre>
+<h3>Variante A · Comprobar longitud</h3>
+<pre><button class="copy">Copiar</button><code>const nombreValido = nombre.length &gt;= 3 &amp;&amp; nombre.length &lt;= 30;</code></pre>
+<h3>Variante B · Comprobar edad entre dos valores</h3>
+<pre><button class="copy">Copiar</button><code>const edad = Number(campoEdad.value);
+const edadValida =
+  campoEdad.value !== "" &amp;&amp; edad &gt;= 18 &amp;&amp; edad &lt;= 100;</code></pre>
+<h3>Variante C · Correo electrónico</h3>
+<pre><button class="copy">Copiar</button><code>const regexCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const correoValido = regexCorreo.test(correo);</code></pre>
+<h3>Variante D · Contraseña de al menos 8 caracteres</h3>
+<pre><button class="copy">Copiar</button><code>const passwordValida = password.length &gt;= 8;</code></pre>
+<h3>Variante E · Dos campos deben coincidir</h3>
+<pre><button class="copy">Copiar</button><code>const password = document.getElementById("password").value;
+const repetir = document.getElementById("repetir").value;
+
+const coinciden = password === repetir;</code></pre>
+<h3>Mostrar varios errores</h3>
+<pre><button class="copy">Copiar</button><code>mensaje.textContent = "";
+mensaje.style.whiteSpace = "pre-line";
+
+if (!nombreValido) {
+  mensaje.textContent += "Nombre incorrecto.\n";
+}
+if (!correoValido) {
+  mensaje.textContent += "Correo incorrecto.\n";
+}
+if (!passwordValida) {
+  mensaje.textContent += "Contraseña incorrecta.\n";
+}</code></pre>
+<h3>Regex que conviene reconocer</h3>
+<table><tr><th>Expresión</th><th>Significado</th></tr>
+<tr><td><code>/^\d{4}$/</code></td><td>Exactamente cuatro cifras.</td></tr>
+<tr><td><code>/^\d{5}$/</code></td><td>Exactamente cinco cifras.</td></tr>
+<tr><td><code>/^[a-zA-Z]{3,20}$/</code></td><td>De 3 a 20 letras inglesas.</td></tr>
+<tr><td><code>/^[^\s@]+@[^\s@]+\.[^\s@]+$/</code></td><td>Formato básico de correo.</td></tr></table>
+<p><b>Símbolos:</b> <code>^</code> inicio · <code>$</code> final · <code>\d</code> dígito · <code>\s</code> espacio · <code>{3,50}</code> entre 3 y 50 · <code>+</code> una o más.</p>
+<div class="tip"><b>Ojo:</b> <code>Number("")</code> produce <code>0</code>. Por eso, cuando validas números, comprueba también que el campo no esté vacío.</div>
+</section>
+
+<section id="storage">
+<span class="pill">Bloque 5</span><h2>Web Storage</h2>
+<p class="lead">Permite guardar datos en el navegador para recuperarlos más adelante.</p>
+<table><tr><th>Almacenamiento</th><th>Duración</th></tr>
+<tr><td><code>localStorage</code></td><td>Permanece hasta que se borre.</td></tr>
+<tr><td><code>sessionStorage</code></td><td>Se mantiene durante la sesión de esa pestaña.</td></tr></table>
+<h3>Guardar, recuperar y eliminar</h3>
+<pre><button class="copy">Copiar</button><code>// Guardar un dato
+localStorage.setItem("idioma", "es");
+
+// Recuperarlo
+const idioma = localStorage.getItem("idioma");
+
+// Eliminar esa clave
+localStorage.removeItem("idioma");</code></pre>
+<h3>Guardar un número</h3>
+<pre><button class="copy">Copiar</button><code>localStorage.setItem("puntos", 25);
+
+// Los datos recuperados son texto: convertimos a número.
+const puntos = Number(localStorage.getItem("puntos"));</code></pre>
+<h3>Guardar objetos y arrays con JSON</h3>
+<pre><button class="copy">Copiar</button><code>const usuario = { nombre: "Ane", edad: 21 };
+
+// Convertir el objeto a texto JSON para guardarlo.
+localStorage.setItem("usuario", JSON.stringify(usuario));
+
+// Recuperar el texto y convertirlo otra vez en objeto.
+const texto = localStorage.getItem("usuario");
+
+if (texto !== null) {
+  const usuarioRecuperado = JSON.parse(texto);
+  console.log(usuarioRecuperado.nombre);
+}</code></pre>
+<h3>Añadir un elemento a una lista guardada</h3>
+<pre><button class="copy">Copiar</button><code>function guardarFavorito(nuevoFavorito) {
+  const texto = localStorage.getItem("favoritos");
+  const favoritos = texto === null ? [] : JSON.parse(texto);
+
+  favoritos.push(nuevoFavorito);
+
+  localStorage.setItem("favoritos", JSON.stringify(favoritos));
+}</code></pre>
+<div class="warn"><b>Precaución:</b> no guardes contraseñas ni datos sensibles en <code>localStorage</code>. El JavaScript de la página puede acceder a esos datos.</div>
+</section>
+
+<section id="chuleta">
+<span class="pill">Repaso rápido</span><h2>Chuleta: palabras del enunciado</h2>
+<table><tr><th>Si te piden...</th><th>Piensa en...</th></tr>
+<tr><td>Recorrer todos los elementos</td><td><code>forEach()</code></td></tr>
+<tr><td>Devolver varios que cumplen</td><td><code>filter()</code></td></tr>
+<tr><td>Buscar el primero que coincide</td><td><code>find()</code></td></tr>
+<tr><td>Crear un array transformado</td><td><code>map()</code></td></tr>
+<tr><td>Sumar o acumular</td><td><code>reduce()</code></td></tr>
+<tr><td>Comprobar si alguno / todos cumplen</td><td><code>some()</code> / <code>every()</code></td></tr>
+<tr><td>Crear una plantilla de objetos</td><td><code>class</code></td></tr>
+<tr><td>Crear un objeto</td><td><code>new</code></td></tr>
+<tr><td>Escuchar un clic / envío / escritura</td><td><code>addEventListener()</code></td></tr>
+<tr><td>Crear un elemento HTML</td><td><code>createElement()</code></td></tr>
+<tr><td>Leer un campo</td><td><code>.value</code></td></tr>
+<tr><td>Guardar / recuperar / borrar</td><td><code>setItem()</code> / <code>getItem()</code> / <code>removeItem()</code></td></tr></table>
+</section>
+
+<section id="simulacro">
+<span class="pill">Practica</span><h2>Simulacro de examen: 10 ejercicios</h2>
+<p class="lead">Resuélvelos sin mirar las pistas. Están planteados como enunciados, para que practiques identificar la estructura.</p>
+<ol>
+<li><b>Arrays:</b> con un array de libros, devuelve los que cuesten menos de 20 €, busca uno por título, crea un array de títulos y calcula el total de páginas.</li>
+<li><b>Clases:</b> crea una clase <code>CuentaBancaria</code> con titular y saldo. Añade métodos para ingresar dinero y consultar el saldo.</li>
+<li><b>DOM:</b> crea un botón que cambie el texto de un párrafo y lo ponga de color azul.</li>
+<li><b>Formulario:</b> pide una edad, comprueba que no esté vacía y que sea un número entre 1 y 120.</li>
+<li><b>Web Storage:</b> guarda una ciudad favorita, recupérala al entrar y añade un botón para borrarla.</li>
+<li><b>Arrays + DOM:</b> muestra tareas como elementos <code>li</code> y añade un botón para eliminar cada tarea.</li>
+<li><b>Clases + arrays:</b> crea tres objetos <code>Producto</code> y muestra los que tengan un precio superior a 10 €.</li>
+<li><b>Regex:</b> valida un código postal de exactamente cinco cifras.</li>
+<li><b>Storage + JSON:</b> guarda un objeto con nombre y edad, recupéralo y muestra el nombre.</li>
+<li><b>DOM + input:</b> crea un buscador que muestre en un párrafo lo que se escribe en tiempo real.</li>
+</ol>
+<h3>Pistas, sin solución completa</h3>
+<ul>
+<li>Varios resultados: <code>filter</code>. Primer resultado: <code>find</code>.</li>
+<li>Una lista de propiedades: <code>map</code>. Una suma: <code>reduce</code>.</li>
+<li>Modificar la página al pulsar: evento <code>click</code>.</li>
+<li>Reaccionar al escribir: evento <code>input</code>.</li>
+<li>Guardar un objeto: <code>JSON.stringify</code>; recuperarlo: <code>JSON.parse</code>.</li>
+</ul>
+</section>
+
+<section id="errores">
+<span class="pill">Evita perder puntos</span><h2>Errores frecuentes en el examen</h2>
+<ul>
+<li>Escribir <code>Constructor</code> en vez de <code>constructor</code>.</li>
+<li>Olvidar <code>this.propiedad = parametro</code> dentro del constructor.</li>
+<li>Olvidar el <code>return</code> dentro de <code>filter</code> o <code>reduce</code>.</li>
+<li>Confundir <code>return</code> (devuelve) con <code>console.log</code> (muestra por consola).</li>
+<li>Usar <code>=</code> en vez de <code>===</code> para comparar.</li>
+<li>Colocar un evento fuera del bloque donde se crea el elemento.</li>
+<li>Olvidar <code>event.preventDefault()</code> en el envío de un formulario.</li>
+<li>Olvidar limpiar los mensajes anteriores de validación.</li>
+<li>Creer que <code>localStorage.getItem()</code> devuelve <code>null</code> cuando la clave no existe, no una cadena vacía.</li>
+<li>Olvidar que los datos de Web Storage se recuperan como texto.</li>
+<li>No usar <code>defer</code> cuando el script se carga desde el <code>head</code>.</li>
+</ul>
+<div class="tip"><b>Último consejo:</b> en cada ejercicio, escribe primero el esqueleto. Por ejemplo, selecciona elementos, crea el evento y después completa la condición o el recorrido. Es más fácil detectar errores así.</div>
+</section>
+</main></div>
+<footer>Guía de estudio personal · JavaScript · Puedes imprimir esta página o guardarla como PDF desde el navegador.</footer>
+<script>
+document.querySelectorAll("button.copy").forEach(btn=>{
+ btn.addEventListener("click", async ()=>{
+   const code=btn.parentElement.querySelector("code").innerText;
+   try{await navigator.clipboard.writeText(code);btn.textContent="¡Copiado!";}
+   catch(e){btn.textContent="Selecciona y copia";}
+   setTimeout(()=>btn.textContent="Copiar",1300);
+ });
+});
+const search=document.getElementById("buscador");
+search.addEventListener("input",()=>{
+ const q=search.value.toLowerCase();
+ document.querySelectorAll("main section").forEach(section=>{
+   section.style.display=section.innerText.toLowerCase().includes(q)?"":"none";
+ });
+});
+</script>
+</body></html>
