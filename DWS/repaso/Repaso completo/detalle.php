@@ -4,8 +4,14 @@ require_once 'includes/conexion.php';
 require_once 'includes/funciones_bd.php';
 require_once 'includes/funciones.php';
 $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
-// TODO: validar el ID y llamar a obtenerVideojuegoPorId($conexion, $id).
+
 $juego = null;
+
+// TODO: validar el ID y llamar a obtenerVideojuegoPorId($conexion, $id).
+if ($id !== false && $id !== null && $id > 0) {
+    $juego = obtenerVideojuego($conexion, $id);
+}
+
 require_once 'includes/header.php';
 ?>
 <h2>Detalles del videojuego</h2>

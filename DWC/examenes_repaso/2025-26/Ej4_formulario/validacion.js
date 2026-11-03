@@ -11,6 +11,7 @@ formulario.addEventListener("submit", function(event) {
 
   // Seleccionamos los campos del HTML.
   let titulo = document.getElementById("titulo");
+  //let titulo = document.getElementById("titulo").value; es lo mismo pero resume la linea siguente
   let director = document.getElementById("director");
   let anio = document.getElementById("anio");
   let categoria = document.getElementById("categoria");
