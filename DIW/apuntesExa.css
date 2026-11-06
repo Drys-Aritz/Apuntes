@@ -1,0 +1,1233 @@
+
+/* =====================================================
+   00. VARIABLES CSS
+   ===================================================== */
+
+/*
+   :root permite crear variables globales.
+   Se pueden reutilizar en toda la página.
+*/
+
+:root {
+
+    --color-principal: #2563eb;
+    --color-secundario: #1e293b;
+    --color-fondo: #f1f5f9;
+    --color-blanco: #ffffff;
+    --color-texto: #334155;
+    --color-gris: #64748b;
+
+    --color-hover: #1d4ed8;
+
+    --espacio-pequeno: 10px;
+    --espacio-medio: 20px;
+    --espacio-grande: 40px;
+
+    --radio: 12px;
+
+    --sombra:
+        0 5px 20px rgba(0, 0, 0, 0.08);
+
+    --ancho-maximo: 1200px;
+
+}
+
+
+/* =====================================================
+   01. RESET - CONFIGURACIÓN GENERAL
+   ===================================================== */
+
+/*
+   * selecciona TODOS los elementos.
+*/
+
+* {
+
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+
+/* Configuración general del body */
+
+body {
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    background-color: var(--color-fondo);
+
+    color: var(--color-texto);
+
+    line-height: 1.6;
+
+    min-height: 100vh;
+
+}
+
+
+/* Imágenes adaptables */
+
+img {
+
+    max-width: 100%;
+
+    height: auto;
+
+    display: block;
+
+}
+
+
+/* Enlaces generales */
+
+a {
+
+    color: inherit;
+
+    text-decoration: none;
+
+}
+
+
+/* Listas */
+
+ul {
+
+    list-style: none;
+
+}
+
+
+/* Selección del texto */
+
+::selection {
+
+    background-color: var(--color-principal);
+
+    color: white;
+
+}
+
+
+/* =====================================================
+   02. CLASE CONTENEDORA GENERAL
+   ===================================================== */
+
+/*
+   Centra el contenido y limita su anchura.
+*/
+
+.container {
+
+    width: min(100% - 40px, var(--ancho-maximo));
+
+    margin-inline: auto;
+
+}
+
+
+/* =====================================================
+   03. HEADER - CABECERA
+   ===================================================== */
+
+.goiburua {
+
+    background-color: var(--color-secundario);
+
+    color: var(--color-blanco);
+
+    padding: 20px 0;
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
+
+    box-shadow: var(--sombra);
+
+}
+
+
+/* Contenedor interior del header */
+
+.goiburua-barne {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 30px;
+
+    flex-wrap: wrap;
+
+}
+
+
+/* LOGO */
+
+.logo {
+
+    font-size: 25px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+}
+
+
+/* Span dentro del logo */
+
+.logo span {
+
+    color: var(--color-principal);
+
+}
+
+
+/* =====================================================
+   04. NAVEGACIÓN - NAV
+   ===================================================== */
+
+.nabigazioa ul {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 30px;
+
+}
+
+
+/* Enlaces del menú */
+
+.nabigazioa a {
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    transition: color 0.3s ease;
+
+    position: relative;
+
+}
+
+
+/* Hover de los enlaces */
+
+.nabigazioa a:hover {
+
+    color: #60a5fa;
+
+}
+
+
+/* Pseudoelemento para crear una línea inferior */
+
+.nabigazioa a::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 0;
+
+    height: 2px;
+
+    bottom: -5px;
+
+    left: 0;
+
+    background-color: var(--color-principal);
+
+    transition: width 0.3s ease;
+
+}
+
+
+/* Al pasar el ratón, aparece la línea */
+
+.nabigazioa a:hover::after {
+
+    width: 100%;
+
+}
+
+
+/* =====================================================
+   05. BOTONES - BUTTONS
+   ===================================================== */
+
+.btn {
+
+    display: inline-block;
+
+    background-color: var(--color-principal);
+
+    color: white;
+
+    padding: 12px 25px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+
+}
+
+
+/* Efecto al pasar el ratón */
+
+.btn:hover {
+
+    background-color: var(--color-hover);
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 8px 15px rgba(37, 99, 235, 0.3);
+
+}
+
+
+/* Efecto al pulsar */
+
+.btn:active {
+
+    transform: scale(0.97);
+
+}
+
+
+/* Botón de cabecera */
+
+.btn-header {
+
+    background-color: transparent;
+
+    border: 1px solid white;
+
+}
+
+
+/* =====================================================
+   06. MAIN - CONTENIDO PRINCIPAL
+   ===================================================== */
+
+.edukia {
+
+    width: min(100% - 40px, var(--ancho-maximo));
+
+    margin-inline: auto;
+
+}
+
+
+/* Separación general entre secciones */
+
+.edukia section {
+
+    margin-block: 70px;
+
+}
+
+
+/* =====================================================
+   07. HERO - PRESENTACIÓN PRINCIPAL
+   ===================================================== */
+
+.hero {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 50px;
+
+    min-height: 450px;
+
+    padding: 50px;
+
+    background-color: white;
+
+    border-radius: var(--radio);
+
+    box-shadow: var(--sombra);
+
+    overflow: hidden;
+
+}
+
+
+/* Parte textual del Hero */
+
+.hero-edukia {
+
+    flex: 1;
+
+}
+
+
+/* Etiqueta superior */
+
+.etiketa {
+
+    display: inline-block;
+
+    background-color: #dbeafe;
+
+    color: var(--color-principal);
+
+    padding: 6px 14px;
+
+    border-radius: 50px;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 20px;
+
+}
+
+
+/* Título principal */
+
+.hero h1 {
+
+    font-size: clamp(35px, 5vw, 60px);
+
+    line-height: 1.1;
+
+    margin-bottom: 20px;
+
+}
+
+
+/* Span del título */
+
+.hero h1 span {
+
+    color: var(--color-principal);
+
+    display: block;
+
+}
+
+
+/* Párrafo del Hero */
+
+.hero p {
+
+    color: var(--color-gris);
+
+    font-size: 18px;
+
+    margin-bottom: 25px;
+
+    max-width: 500px;
+
+}
+
+
+/* Imagen del Hero */
+
+.hero-irudia {
+
+    flex: 1;
+
+    min-width: 0;
+
+}
+
+
+/* Imagen interior */
+
+.hero-irudia img {
+
+    width: 100%;
+
+    height: 320px;
+
+    object-fit: cover;
+
+    border-radius: var(--radio);
+
+}
+
+
+/* =====================================================
+   08. TÍTULOS DE LAS SECCIONES
+   ===================================================== */
+
+.atal-goiburua {
+
+    text-align: center;
+
+    margin-bottom: 35px;
+
+}
+
+
+/* Subtítulo */
+
+.azpititulua {
+
+    color: var(--color-principal);
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    letter-spacing: 3px;
+
+}
+
+
+/* Título de sección */
+
+.atal-goiburua h2 {
+
+    font-size: clamp(26px, 4vw, 36px);
+
+    color: var(--color-secundario);
+
+    margin-block: 10px;
+
+}
+
+
+/* Descripción */
+
+.atal-goiburua p {
+
+    color: var(--color-gris);
+
+}
+
+
+/* =====================================================
+   09. FLEXBOX - TRES COLUMNAS
+   ===================================================== */
+
+
+/* CONTENEDOR PADRE */
+
+.hiru-zutabe {
+
+    display: flex;
+
+    flex-direction: row;
+
+    justify-content: space-between;
+
+    align-items: stretch;
+
+    gap: 25px;
+
+}
+
+
+/* ELEMENTOS HIJOS */
+
+.zutabe {
+
+    flex: 1 1 0;
+
+    min-width: 0;
+
+    background-color: white;
+
+    padding: 30px;
+
+    border-radius: var(--radio);
+
+    box-shadow: var(--sombra);
+
+    border-bottom: 4px solid var(--color-principal);
+
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease;
+
+}
+
+
+/* Hover de las columnas */
+
+.zutabe:hover {
+
+    transform: translateY(-8px);
+
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+
+}
+
+
+/* Número de cada tarjeta */
+
+.ikonoa {
+
+    width: 55px;
+
+    height: 55px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background-color: #dbeafe;
+
+    color: var(--color-principal);
+
+    border-radius: 50%;
+
+    font-weight: bold;
+
+    margin-bottom: 20px;
+
+}
+
+
+/* Título de cada columna */
+
+.zutabe h3 {
+
+    font-size: 22px;
+
+    margin-bottom: 12px;
+
+}
+
+
+/* Texto de cada columna */
+
+.zutabe p {
+
+    color: var(--color-gris);
+
+    margin-bottom: 20px;
+
+}
+
+
+/* Enlaces de las columnas */
+
+.zutabe a {
+
+    color: var(--color-principal);
+
+    font-weight: bold;
+
+}
+
+
+/* =====================================================
+   10. GRID - CUADRÍCULA AVANZADA
+   ===================================================== */
+
+
+/* CONTENEDOR PADRE */
+
+.grid-wrapper {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    grid-auto-rows: minmax(180px, auto);
+
+    gap: 25px;
+
+    align-items: stretch;
+
+}
+
+
+/* ELEMENTOS HIJOS */
+
+.grid-elementu {
+
+    background-color: white;
+
+    padding: 25px;
+
+    border-radius: var(--radio);
+
+    box-shadow: var(--sombra);
+
+    overflow: hidden;
+
+    position: relative;
+
+}
+
+
+/* PRIMER ELEMENTO: ocupa dos columnas */
+
+.item-1 {
+
+    grid-column: span 2;
+
+    grid-row: span 2;
+
+    padding: 0;
+
+}
+
+
+/* Imagen del primer elemento */
+
+.item-1 img {
+
+    width: 100%;
+
+    height: 250px;
+
+    object-fit: cover;
+
+}
+
+
+/* Texto interior del primer elemento */
+
+.grid-testua {
+
+    padding: 25px;
+
+}
+
+
+/* Categoría del primer elemento */
+
+.categoria {
+
+    display: inline-block;
+
+    color: var(--color-principal);
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    margin-bottom: 10px;
+
+}
+
+
+/* Títulos Grid */
+
+.grid-elementu h3 {
+
+    font-size: 21px;
+
+    margin-bottom: 10px;
+
+}
+
+
+/* Párrafos Grid */
+
+.grid-elementu p {
+
+    color: var(--color-gris);
+
+}
+
+
+/* Diferenciar los elementos pares */
+
+.grid-elementu:nth-child(even) {
+
+    background-color: #eaf1ff;
+
+}
+
+
+/* Hover de los elementos Grid */
+
+.grid-elementu:hover {
+
+    transform: translateY(-5px);
+
+    transition: transform 0.3s ease;
+
+}
+
+
+/* =====================================================
+   11. GRID TEMPLATE AREAS
+   ===================================================== */
+
+
+/* Contenedor principal */
+
+.layout-wrapper {
+
+    display: grid;
+
+    grid-template-columns: 1fr 3fr 1fr;
+
+    grid-template-rows: auto 250px auto;
+
+    grid-template-areas:
+
+        "header header header"
+
+        "sidebar main aside"
+
+        "footer footer footer";
+
+    gap: 15px;
+
+}
+
+
+/* HEADER DEL GRID */
+
+.layout-header {
+
+    grid-area: header;
+
+    background-color: #2563eb;
+
+    color: white;
+
+    padding: 25px;
+
+}
+
+
+/* SIDEBAR */
+
+.layout-sidebar {
+
+    grid-area: sidebar;
+
+    background-color: #dbeafe;
+
+    padding: 20px;
+
+}
+
+
+/* MAIN */
+
+.layout-main {
+
+    grid-area: main;
+
+    background-color: white;
+
+    padding: 25px;
+
+}
+
+
+/* ASIDE */
+
+.layout-aside {
+
+    grid-area: aside;
+
+    background-color: #dbeafe;
+
+    padding: 20px;
+
+}
+
+
+/* FOOTER DEL GRID */
+
+.layout-footer {
+
+    grid-area: footer;
+
+    background-color: #1e293b;
+
+    color: white;
+
+    padding: 25px;
+
+}
+
+
+/* =====================================================
+   12. FORMULARIOS
+   ===================================================== */
+
+
+/* Contenedor del formulario */
+
+.formulario {
+
+    max-width: 650px;
+
+    margin-inline: auto;
+
+    background-color: white;
+
+    padding: 35px;
+
+    border-radius: var(--radio);
+
+    box-shadow: var(--sombra);
+
+}
+
+
+/* Grupo de cada campo */
+
+.form-taldea {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    margin-bottom: 20px;
+
+}
+
+
+/* Etiquetas */
+
+.form-taldea label {
+
+    font-weight: bold;
+
+    color: var(--color-secundario);
+
+}
+
+
+/* Inputs y textarea */
+
+.form-taldea input,
+.form-taldea textarea {
+
+    width: 100%;
+
+    padding: 13px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 7px;
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    outline: none;
+
+    transition: border-color 0.3s,
+                box-shadow 0.3s;
+
+}
+
+
+/* Estado focus */
+
+.form-taldea input:focus,
+.form-taldea textarea:focus {
+
+    border-color: var(--color-principal);
+
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+
+}
+
+
+/* Evitar redimensionamiento horizontal */
+
+.form-taldea textarea {
+
+    resize: vertical;
+
+}
+
+
+/* =====================================================
+   13. FOOTER - PIE DE PÁGINA
+   ===================================================== */
+
+.oina {
+
+    background-color: var(--color-secundario);
+
+    color: white;
+
+    padding: 40px 20px;
+
+    text-align: center;
+
+    margin-top: 70px;
+
+}
+
+
+.oina h3 {
+
+    font-size: 25px;
+
+    margin-bottom: 10px;
+
+}
+
+
+.oina p {
+
+    color: #cbd5e1;
+
+    font-size: 14px;
+
+}
+
+
+/* =====================================================
+   14. PSEUDOELEMENTOS
+   ===================================================== */
+
+/* Añade un elemento decorativo antes del título */
+
+.atal-goiburua h2::after {
+
+    content: "";
+
+    display: block;
+
+    width: 60px;
+
+    height: 4px;
+
+    background-color: var(--color-principal);
+
+    margin: 12px auto 0;
+
+    border-radius: 5px;
+
+}
+
+
+/* =====================================================
+   15. RESPONSIVE - TABLETS
+   ===================================================== */
+
+/* Pantallas de 900px o menos */
+
+@media (max-width: 900px) {
+
+
+    /* Hero en vertical */
+
+    .hero {
+
+        flex-direction: column;
+
+        text-align: center;
+
+    }
+
+
+    .hero p {
+
+        margin-inline: auto;
+
+    }
+
+
+    /* Grid de dos columnas */
+
+    .grid-wrapper {
+
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    }
+
+
+    /* Layout de dos columnas */
+
+    .layout-wrapper {
+
+        grid-template-columns: 1fr 2fr;
+
+        grid-template-rows: auto 200px auto auto;
+
+        grid-template-areas:
+
+            "header header"
+
+            "sidebar main"
+
+            "aside aside"
+
+            "footer footer";
+
+    }
+
+}
+
+
+/* =====================================================
+   16. RESPONSIVE - MÓVILES
+   ===================================================== */
+
+/* Pantallas de 600px o menos */
+
+@media (max-width: 600px) {
+
+
+    /* Cabecera */
+
+    .goiburua-barne {
+
+        flex-direction: column;
+
+        align-items: center;
+
+    }
+
+
+    /* Menú */
+
+    .nabigazioa ul {
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+        gap: 15px;
+
+    }
+
+
+    /* Hero */
+
+    .hero {
+
+        padding: 25px;
+
+    }
+
+
+    /* Columnas en vertical */
+
+    .hiru-zutabe {
+
+        flex-direction: column;
+
+    }
+
+
+    /* Grid de una columna */
+
+    .grid-wrapper {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    /* El primer elemento deja de ocupar dos columnas */
+
+    .item-1 {
+
+        grid-column: span 1;
+
+        grid-row: span 1;
+
+    }
+
+
+    /* Layout de una columna */
+
+    .layout-wrapper {
+
+        grid-template-columns: 1fr;
+
+        grid-template-rows: auto;
+
+        grid-template-areas:
+
+            "header"
+
+            "sidebar"
+
+            "main"
+
+            "aside"
+
+            "footer";
+
+    }
+
+
+    /* Formulario */
+
+    .formulario {
+
+        padding: 20px;
+
+    }
+
+}
+
+
+/* =====================================================
+   17. ACCESIBILIDAD
+   ===================================================== */
+
+/* Resalta los elementos al navegar con teclado */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+
+    outline: 3px solid orange;
+
+    outline-offset: 4px;
+
+}
+
+
+/* Respeta la preferencia de movimiento reducido */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration: 0.01ms !important;
+
+        transition-duration: 0.01ms !important;
+
+        scroll-behavior: auto !important;
+
+    }
+
+}
