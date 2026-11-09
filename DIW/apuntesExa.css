@@ -1,1233 +1,659 @@
-
-/* =====================================================
-   00. VARIABLES CSS
-   ===================================================== */
-
 /*
-   :root permite crear variables globales.
-   Se pueden reutilizar en toda la página.
+    APUNTES DE CSS
+
+    CSS se escribe con esta estructura:
+
+    selector {
+        propiedad: valor;
+    }
+
+    Ejemplo:
+    p {
+        color: blue;
+    }
+
+    El selector indica a que elemento HTML se aplica el estilo.
+    La propiedad indica que queremos cambiar y el valor como queremos verlo.
 */
 
-:root {
-
-    --color-principal: #2563eb;
-    --color-secundario: #1e293b;
-    --color-fondo: #f1f5f9;
-    --color-blanco: #ffffff;
-    --color-texto: #334155;
-    --color-gris: #64748b;
-
-    --color-hover: #1d4ed8;
-
-    --espacio-pequeno: 10px;
-    --espacio-medio: 20px;
-    --espacio-grande: 40px;
-
-    --radio: 12px;
-
-    --sombra:
-        0 5px 20px rgba(0, 0, 0, 0.08);
-
-    --ancho-maximo: 1200px;
-
-}
-
-
-/* =====================================================
-   01. RESET - CONFIGURACIÓN GENERAL
-   ===================================================== */
-
 /*
-   * selecciona TODOS los elementos.
+    0. ESTRUCTURA Y MAQUETACION
+
+    HTML crea la estructura y organiza el contenido.
+    CSS da estilo y decide como se distribuyen los elementos.
+
+    Ejemplo de estructura habitual en HTML:
+
+    <header>Cabecera de la pagina</header>
+    <nav>Menu de navegacion</nav>
+    <main>
+        <section>Una parte del contenido</section>
+        <section>Otra parte del contenido</section>
+    </main>
+    <footer>Pie de pagina</footer>
+
+    Estas etiquetas describen la funcion del contenido:
+    - header: cabecera.
+    - nav: enlaces de navegacion.
+    - main: contenido principal; normalmente hay uno por pagina.
+    - section: agrupa contenido relacionado.
+    - article: contenido independiente, como una noticia o tarjeta.
+    - aside: contenido secundario, como una barra lateral.
+    - footer: pie de pagina o de una seccion.
+
+    Maquetar significa colocar y distribuir esos elementos en la pagina.
+    Algunas formas habituales de maquetar son:
+    - Flujo normal: los bloques aparecen uno debajo de otro.
+    - Flexbox: coloca elementos en una fila o columna.
+    - Grid: organiza elementos en filas y columnas.
+
+    Ejemplo de Grid con areas. Es solo un apunte; no se aplica a esta pagina:
+
+    .pagina {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        grid-template-areas:
+            "cabecera cabecera"
+            "menu     contenido"
+            "pie      pie";
+        gap: 10px;
+    }
+
+    .cabecera  { grid-area: cabecera; }
+    .menu      { grid-area: menu; }
+    .contenido { grid-area: contenido; }
+    .pie       { grid-area: pie; }
+
+    Los nombres de grid-template-areas deben coincidir con los valores
+    de grid-area. Un punto (.) deja una celda vacia.
 */
 
+
+/* 1. SELECTORES Y ESTILOS GENERALES */
+
+/* El asterisco (*) selecciona todos los elementos de la pagina. */
 * {
-
-    margin: 0;
-    padding: 0;
-
+    /*
+        El modelo de caja calcula el ancho incluyendo el contenido,
+        el padding y el borde. Facilita controlar el tamaño de las cajas.
+    */
     box-sizing: border-box;
-
 }
 
-
-/* Configuración general del body */
-
+/* body representa todo el contenido visible de la pagina. */
 body {
+    /* Los navegadores añaden margen por defecto; 0 lo elimina. */
+    margin: 0;
 
-    font-family: Arial, Helvetica, sans-serif;
+    /* Define el tipo de letra. Si no hay Arial, prueba la siguiente. */
+    font-family: Arial, sans-serif;
 
-    background-color: var(--color-fondo);
+    /* color cambia el color del texto. */
+    color: #333;
 
-    color: var(--color-texto);
+    /* background-color cambia el color de fondo. */
+    background-color: #f4f4f4;
 
-    line-height: 1.6;
-
-    min-height: 100vh;
-
+    /* Altura de linea: 1.5 veces el tamaño de la letra. */
+    line-height: 1.5;
 }
 
-
-/* Imágenes adaptables */
-
-img {
-
-    max-width: 100%;
-
-    height: auto;
-
-    display: block;
-
-}
-
-
-/* Enlaces generales */
-
+/* a selecciona todos los enlaces. */
 a {
-
+    /* inherit hace que el enlace use el color de su elemento padre. */
     color: inherit;
 
+    /* Quita el subrayado que tienen los enlaces por defecto. */
     text-decoration: none;
-
 }
-
-
-/* Listas */
-
-ul {
-
-    list-style: none;
-
-}
-
-
-/* Selección del texto */
-
-::selection {
-
-    background-color: var(--color-principal);
-
-    color: white;
-
-}
-
-
-/* =====================================================
-   02. CLASE CONTENEDORA GENERAL
-   ===================================================== */
 
 /*
-   Centra el contenido y limita su anchura.
+    La coma permite aplicar las mismas reglas a varios selectores.
+    .container y .edukia son nombres de clase del HTML.
 */
+.container,
+.edukia {
+    /* El elemento ocupa el 90% del ancho disponible. */
+    width: 90%;
 
-.container {
+    /* Pero no crece mas de 1100px, aunque la pantalla sea muy ancha. */
+    max-width: 1100px;
 
-    width: min(100% - 40px, var(--ancho-maximo));
-
-    margin-inline: auto;
-
+    /*
+        margin: arriba/abajo izquierda/derecha.
+        auto reparte el espacio lateral y centra el elemento.
+    */
+    margin: 0 auto;
 }
 
 
-/* =====================================================
-   03. HEADER - CABECERA
-   ===================================================== */
+/* 2. CABECERA Y MENU */
 
+/* El punto selecciona una clase: .goiburua selecciona class="goiburua". */
 .goiburua {
-
-    background-color: var(--color-secundario);
-
-    color: var(--color-blanco);
-
-    padding: 20px 0;
-
-    position: sticky;
-
-    top: 0;
-
-    z-index: 100;
-
-    box-shadow: var(--sombra);
-
+    /* padding crea espacio interior: 15px arriba/abajo y 0 a los lados. */
+    padding: 15px 0;
+    color: white;
+    background-color: #1e293b;
 }
 
-
-/* Contenedor interior del header */
-
+/*
+    Selector descendiente: selecciona un elemento con esta clase
+    que esta dentro de otro elemento con la clase .goiburua-barne.
+*/
 .goiburua-barne {
-
+    /*
+        display: flex activa Flexbox.
+        Los elementos hijos se colocan en una fila por defecto.
+    */
     display: flex;
 
+    /* Reparte los hijos dejando espacio entre ellos. */
     justify-content: space-between;
 
+    /* Centra los hijos en el eje vertical. */
     align-items: center;
 
-    gap: 30px;
-
-    flex-wrap: wrap;
-
+    /* Deja 20px de separacion entre los hijos. */
+    gap: 20px;
 }
-
-
-/* LOGO */
 
 .logo {
+    /* font-size cambia el tamaño de letra. */
+    font-size: 24px;
 
-    font-size: 25px;
-
-    font-weight: 800;
-
-    letter-spacing: 2px;
-
+    /* font-weight: bold pone el texto en negrita. */
+    font-weight: bold;
 }
 
-
-/* Span dentro del logo */
-
+/* Selecciona los span que estan dentro del elemento .logo. */
 .logo span {
-
-    color: var(--color-principal);
-
-}
-
-
-/* =====================================================
-   04. NAVEGACIÓN - NAV
-   ===================================================== */
-
-.nabigazioa ul {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 30px;
-
-}
-
-
-/* Enlaces del menú */
-
-.nabigazioa a {
-
-    color: white;
-
-    font-size: 15px;
-
-    font-weight: 600;
-
-    transition: color 0.3s ease;
-
-    position: relative;
-
-}
-
-
-/* Hover de los enlaces */
-
-.nabigazioa a:hover {
-
     color: #60a5fa;
-
 }
 
-
-/* Pseudoelemento para crear una línea inferior */
-
-.nabigazioa a::after {
-
-    content: "";
-
-    position: absolute;
-
-    width: 0;
-
-    height: 2px;
-
-    bottom: -5px;
-
-    left: 0;
-
-    background-color: var(--color-principal);
-
-    transition: width 0.3s ease;
-
-}
-
-
-/* Al pasar el ratón, aparece la línea */
-
-.nabigazioa a:hover::after {
-
-    width: 100%;
-
-}
-
-
-/* =====================================================
-   05. BOTONES - BUTTONS
-   ===================================================== */
-
-.btn {
-
-    display: inline-block;
-
-    background-color: var(--color-principal);
-
-    color: white;
-
-    padding: 12px 25px;
-
-    border: none;
-
-    border-radius: 8px;
-
-    font-size: 15px;
-
-    font-weight: bold;
-
-    cursor: pointer;
-
-    transition: all 0.3s ease;
-
-}
-
-
-/* Efecto al pasar el ratón */
-
-.btn:hover {
-
-    background-color: var(--color-hover);
-
-    transform: translateY(-3px);
-
-    box-shadow: 0 8px 15px rgba(37, 99, 235, 0.3);
-
-}
-
-
-/* Efecto al pulsar */
-
-.btn:active {
-
-    transform: scale(0.97);
-
-}
-
-
-/* Botón de cabecera */
-
-.btn-header {
-
-    background-color: transparent;
-
-    border: 1px solid white;
-
-}
-
-
-/* =====================================================
-   06. MAIN - CONTENIDO PRINCIPAL
-   ===================================================== */
-
-.edukia {
-
-    width: min(100% - 40px, var(--ancho-maximo));
-
-    margin-inline: auto;
-
-}
-
-
-/* Separación general entre secciones */
-
-.edukia section {
-
-    margin-block: 70px;
-
-}
-
-
-/* =====================================================
-   07. HERO - PRESENTACIÓN PRINCIPAL
-   ===================================================== */
-
-.hero {
-
+/* Selecciona la lista ul que esta dentro del menu. */
+.nabigazioa ul {
+    /* Flexbox coloca los elementos li uno al lado del otro. */
     display: flex;
+    gap: 20px;
 
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 50px;
-
-    min-height: 450px;
-
-    padding: 50px;
-
-    background-color: white;
-
-    border-radius: var(--radio);
-
-    box-shadow: var(--sombra);
-
-    overflow: hidden;
-
-}
-
-
-/* Parte textual del Hero */
-
-.hero-edukia {
-
-    flex: 1;
-
-}
-
-
-/* Etiqueta superior */
-
-.etiketa {
-
-    display: inline-block;
-
-    background-color: #dbeafe;
-
-    color: var(--color-principal);
-
-    padding: 6px 14px;
-
-    border-radius: 50px;
-
-    font-size: 12px;
-
-    font-weight: bold;
-
-    letter-spacing: 1px;
-
-    margin-bottom: 20px;
-
-}
-
-
-/* Título principal */
-
-.hero h1 {
-
-    font-size: clamp(35px, 5vw, 60px);
-
-    line-height: 1.1;
-
-    margin-bottom: 20px;
-
-}
-
-
-/* Span del título */
-
-.hero h1 span {
-
-    color: var(--color-principal);
-
-    display: block;
-
-}
-
-
-/* Párrafo del Hero */
-
-.hero p {
-
-    color: var(--color-gris);
-
-    font-size: 18px;
-
-    margin-bottom: 25px;
-
-    max-width: 500px;
-
-}
-
-
-/* Imagen del Hero */
-
-.hero-irudia {
-
-    flex: 1;
-
-    min-width: 0;
-
-}
-
-
-/* Imagen interior */
-
-.hero-irudia img {
-
-    width: 100%;
-
-    height: 320px;
-
-    object-fit: cover;
-
-    border-radius: var(--radio);
-
-}
-
-
-/* =====================================================
-   08. TÍTULOS DE LAS SECCIONES
-   ===================================================== */
-
-.atal-goiburua {
-
-    text-align: center;
-
-    margin-bottom: 35px;
-
-}
-
-
-/* Subtítulo */
-
-.azpititulua {
-
-    color: var(--color-principal);
-
-    font-size: 13px;
-
-    font-weight: bold;
-
-    letter-spacing: 3px;
-
-}
-
-
-/* Título de sección */
-
-.atal-goiburua h2 {
-
-    font-size: clamp(26px, 4vw, 36px);
-
-    color: var(--color-secundario);
-
-    margin-block: 10px;
-
-}
-
-
-/* Descripción */
-
-.atal-goiburua p {
-
-    color: var(--color-gris);
-
-}
-
-
-/* =====================================================
-   09. FLEXBOX - TRES COLUMNAS
-   ===================================================== */
-
-
-/* CONTENEDOR PADRE */
-
-.hiru-zutabe {
-
-    display: flex;
-
-    flex-direction: row;
-
-    justify-content: space-between;
-
-    align-items: stretch;
-
-    gap: 25px;
-
-}
-
-
-/* ELEMENTOS HIJOS */
-
-.zutabe {
-
-    flex: 1 1 0;
-
-    min-width: 0;
-
-    background-color: white;
-
-    padding: 30px;
-
-    border-radius: var(--radio);
-
-    box-shadow: var(--sombra);
-
-    border-bottom: 4px solid var(--color-principal);
-
-    transition: transform 0.3s ease,
-                box-shadow 0.3s ease;
-
-}
-
-
-/* Hover de las columnas */
-
-.zutabe:hover {
-
-    transform: translateY(-8px);
-
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
-
-}
-
-
-/* Número de cada tarjeta */
-
-.ikonoa {
-
-    width: 55px;
-
-    height: 55px;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    background-color: #dbeafe;
-
-    color: var(--color-principal);
-
-    border-radius: 50%;
-
-    font-weight: bold;
-
-    margin-bottom: 20px;
-
-}
-
-
-/* Título de cada columna */
-
-.zutabe h3 {
-
-    font-size: 22px;
-
-    margin-bottom: 12px;
-
-}
-
-
-/* Texto de cada columna */
-
-.zutabe p {
-
-    color: var(--color-gris);
-
-    margin-bottom: 20px;
-
-}
-
-
-/* Enlaces de las columnas */
-
-.zutabe a {
-
-    color: var(--color-principal);
-
-    font-weight: bold;
-
-}
-
-
-/* =====================================================
-   10. GRID - CUADRÍCULA AVANZADA
-   ===================================================== */
-
-
-/* CONTENEDOR PADRE */
-
-.grid-wrapper {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, minmax(0, 1fr));
-
-    grid-auto-rows: minmax(180px, auto);
-
-    gap: 25px;
-
-    align-items: stretch;
-
-}
-
-
-/* ELEMENTOS HIJOS */
-
-.grid-elementu {
-
-    background-color: white;
-
-    padding: 25px;
-
-    border-radius: var(--radio);
-
-    box-shadow: var(--sombra);
-
-    overflow: hidden;
-
-    position: relative;
-
-}
-
-
-/* PRIMER ELEMENTO: ocupa dos columnas */
-
-.item-1 {
-
-    grid-column: span 2;
-
-    grid-row: span 2;
-
+    /* Quita el espacio y los puntos que tienen las listas por defecto. */
     padding: 0;
+    list-style: none;
+}
 
+/*
+    :hover es una pseudoclase: aplica el estilo cuando el raton
+    esta encima del enlace.
+*/
+.nabigazioa a:hover {
+    color: #93c5fd;
 }
 
 
-/* Imagen del primer elemento */
+/* 3. BOTONES */
 
-.item-1 img {
-
-    width: 100%;
-
-    height: 250px;
-
-    object-fit: cover;
-
-}
-
-
-/* Texto interior del primer elemento */
-
-.grid-testua {
-
-    padding: 25px;
-
-}
-
-
-/* Categoría del primer elemento */
-
-.categoria {
-
+/* Una clase se puede reutilizar en varios elementos HTML. */
+.btn {
+    /*
+        inline-block permite que el enlace se comporte como una caja
+        y pueda tener padding y margenes.
+    */
     display: inline-block;
-
-    color: var(--color-principal);
-
-    font-size: 12px;
-
-    font-weight: bold;
-
-    margin-bottom: 10px;
-
-}
-
-
-/* Títulos Grid */
-
-.grid-elementu h3 {
-
-    font-size: 21px;
-
-    margin-bottom: 10px;
-
-}
-
-
-/* Párrafos Grid */
-
-.grid-elementu p {
-
-    color: var(--color-gris);
-
-}
-
-
-/* Diferenciar los elementos pares */
-
-.grid-elementu:nth-child(even) {
-
-    background-color: #eaf1ff;
-
-}
-
-
-/* Hover de los elementos Grid */
-
-.grid-elementu:hover {
-
-    transform: translateY(-5px);
-
-    transition: transform 0.3s ease;
-
-}
-
-
-/* =====================================================
-   11. GRID TEMPLATE AREAS
-   ===================================================== */
-
-
-/* Contenedor principal */
-
-.layout-wrapper {
-
-    display: grid;
-
-    grid-template-columns: 1fr 3fr 1fr;
-
-    grid-template-rows: auto 250px auto;
-
-    grid-template-areas:
-
-        "header header header"
-
-        "sidebar main aside"
-
-        "footer footer footer";
-
-    gap: 15px;
-
-}
-
-
-/* HEADER DEL GRID */
-
-.layout-header {
-
-    grid-area: header;
-
+    padding: 10px 18px;
+    color: white;
     background-color: #2563eb;
 
-    color: white;
+    /* border: ancho tipo color. 0 quita el borde. */
+    border: 0;
 
-    padding: 25px;
-
-}
-
-
-/* SIDEBAR */
-
-.layout-sidebar {
-
-    grid-area: sidebar;
-
-    background-color: #dbeafe;
-
-    padding: 20px;
-
-}
-
-
-/* MAIN */
-
-.layout-main {
-
-    grid-area: main;
-
-    background-color: white;
-
-    padding: 25px;
-
-}
-
-
-/* ASIDE */
-
-.layout-aside {
-
-    grid-area: aside;
-
-    background-color: #dbeafe;
-
-    padding: 20px;
-
-}
-
-
-/* FOOTER DEL GRID */
-
-.layout-footer {
-
-    grid-area: footer;
-
-    background-color: #1e293b;
-
-    color: white;
-
-    padding: 25px;
-
-}
-
-
-/* =====================================================
-   12. FORMULARIOS
-   ===================================================== */
-
-
-/* Contenedor del formulario */
-
-.formulario {
-
-    max-width: 650px;
-
-    margin-inline: auto;
-
-    background-color: white;
-
-    padding: 35px;
-
-    border-radius: var(--radio);
-
-    box-shadow: var(--sombra);
-
-}
-
-
-/* Grupo de cada campo */
-
-.form-taldea {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 8px;
-
-    margin-bottom: 20px;
-
-}
-
-
-/* Etiquetas */
-
-.form-taldea label {
-
-    font-weight: bold;
-
-    color: var(--color-secundario);
-
-}
-
-
-/* Inputs y textarea */
-
-.form-taldea input,
-.form-taldea textarea {
-
-    width: 100%;
-
-    padding: 13px;
-
-    border: 1px solid #cbd5e1;
-
-    border-radius: 7px;
-
-    font-family: inherit;
-
-    font-size: 15px;
-
-    outline: none;
-
-    transition: border-color 0.3s,
-                box-shadow 0.3s;
-
-}
-
-
-/* Estado focus */
-
-.form-taldea input:focus,
-.form-taldea textarea:focus {
-
-    border-color: var(--color-principal);
-
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
-
-}
-
-
-/* Evitar redimensionamiento horizontal */
-
-.form-taldea textarea {
-
-    resize: vertical;
-
-}
-
-
-/* =====================================================
-   13. FOOTER - PIE DE PÁGINA
-   ===================================================== */
-
-.oina {
-
-    background-color: var(--color-secundario);
-
-    color: white;
-
-    padding: 40px 20px;
-
-    text-align: center;
-
-    margin-top: 70px;
-
-}
-
-
-.oina h3 {
-
-    font-size: 25px;
-
-    margin-bottom: 10px;
-
-}
-
-
-.oina p {
-
-    color: #cbd5e1;
-
-    font-size: 14px;
-
-}
-
-
-/* =====================================================
-   14. PSEUDOELEMENTOS
-   ===================================================== */
-
-/* Añade un elemento decorativo antes del título */
-
-.atal-goiburua h2::after {
-
-    content: "";
-
-    display: block;
-
-    width: 60px;
-
-    height: 4px;
-
-    background-color: var(--color-principal);
-
-    margin: 12px auto 0;
-
+    /* Redondea las esquinas de la caja. */
     border-radius: 5px;
 
+    /* Cambia el cursor para indicar que se puede pulsar. */
+    cursor: pointer;
+}
+
+/* Cambia el fondo del boton al pasar el raton por encima. */
+.btn:hover {
+    background-color: #1d4ed8;
+}
+
+/*
+    Este elemento tiene dos clases en el HTML: btn y btn-header.
+    Por eso recibe las reglas de .btn y tambien las de aqui.
+*/
+.btn-header {
+    border: 1px solid white;
+    background-color: transparent;
 }
 
 
-/* =====================================================
-   15. RESPONSIVE - TABLETS
-   ===================================================== */
+/* 4. SECCIONES Y TITULOS */
 
-/* Pantallas de 900px o menos */
+/* Selecciona las section que estan dentro de .edukia. */
+.edukia section {
+    /* margin crea espacio exterior: 40px arriba/abajo, 0 a los lados. */
+    margin: 40px 0;
+}
 
-@media (max-width: 900px) {
+.hero {
+    /* Espacio entre el borde de la caja y su contenido. */
+    padding: 40px;
+    text-align: center;
+    background-color: white;
+    border-radius: 8px;
+}
 
+/* Selector descendiente: el h1 que esta dentro de .hero. */
+.hero h1 {
+    margin-top: 0;
+    font-size: 36px;
+}
 
-    /* Hero en vertical */
+/* El span dentro del titulo tiene un color distinto. */
+.hero h1 span {
+    color: #2563eb;
+}
 
-    .hero {
+.hero p {
+    margin-bottom: 25px;
+}
 
-        flex-direction: column;
+/*
+    La coma agrupa dos clases para darles el mismo estilo.
+    Ambas clases aparecen en elementos diferentes del HTML.
+*/
+.etiketa,
+.azpititulua {
+    color: #2563eb;
+    font-weight: bold;
+}
 
-        text-align: center;
+.atal-goiburua {
+    margin-bottom: 20px;
+    text-align: center;
+}
 
-    }
+/* En h2, margin: 5px 0 significa 5px arriba/abajo y 0 a los lados. */
+.atal-goiburua h2 {
+    margin: 5px 0;
+}
 
+/* 5. EJEMPLO DE ESTRUCTURA HTML Y MAQUETACION */
 
-    .hero p {
+/*
+    Este ejemplo del HTML usa Grid para colocar sus zonas.
+    Cada nombre de grid-template-areas se corresponde con un grid-area.
+*/
+.maqueta {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas:
+        "cabecera cabecera"
+        "menu     menu"
+        "contenido contenido"
+        "pie      pie";
+    gap: 10px;
+    padding: 15px;
+    background-color: white;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+}
 
-        margin-inline: auto;
+.maqueta-cabecera {
+    grid-area: cabecera;
+    padding: 15px;
+    color: white;
+    background-color: #1e293b;
+}
 
-    }
+.maqueta-menu {
+    grid-area: menu;
+    padding: 10px;
+    background-color: #dbeafe;
+}
 
+.maqueta-contenido {
+    grid-area: contenido;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 10px;
+}
 
-    /* Grid de dos columnas */
+.maqueta-articulo {
+    padding: 15px;
+    background-color: #f4f4f4;
+}
 
-    .grid-wrapper {
+.maqueta-aside {
+    padding: 15px;
+    background-color: #e0e7ff;
+}
 
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+.maqueta-pie {
+    grid-area: pie;
+    padding: 10px;
+    text-align: center;
+    background-color: #e5e7eb;
+}
 
-    }
+.maqueta-articulo h3 {
+    margin-top: 8px;
+}
 
+.maqueta-nota {
+    padding: 12px;
+    background-color: #eaf1ff;
+}
 
-    /* Layout de dos columnas */
+/* 6. COLUMNAS, MODELO DE CAJA Y SOMBRAS */
 
-    .layout-wrapper {
+/* Grid crea tres columnas iguales; gap deja espacio entre las tarjetas. */
+.ejemplos-columnas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
 
-        grid-template-columns: 1fr 2fr;
+.ejemplo-card {
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
 
-        grid-template-rows: auto 200px auto auto;
+    /* box-shadow: desplazamiento-x desplazamiento-y desenfoque color. */
+    box-shadow: 0 3px 8px #0000001a;
+}
 
-        grid-template-areas:
+/* Muestra contenido, padding y borde; el margen separa esta caja. */
+.caja-demo {
+    margin: 15px;
+    padding: 15px;
+    border: 3px solid #2563eb;
+    background-color: #dbeafe;
+    text-align: center;
+}
 
-            "header header"
+.lista-selectores {
+    padding-left: 20px;
+}
 
-            "sidebar main"
+.lista-selectores li {
+    margin-bottom: 8px;
+}
 
-            "aside aside"
+/* Esta tarjeta tiene una sombra un poco más visible para comparar. */
+.ejemplo-sombra {
+    box-shadow: 0 6px 14px #00000026;
+}
 
-            "footer footer";
+.etiqueta-demo {
+    padding: 4px 8px;
+    color: #1e40af;
+    background-color: #dbeafe;
+}
 
-    }
+/* El borde discontinuo permite comparar background-color y border. */
+.fondo-demo {
+    padding: 12px;
+    background-color: #dbeafe;
+    border: 2px dashed #2563eb;
+    text-align: center;
+}
 
+/*
+    El padre relative sirve de referencia para el hijo absolute.
+    top y right indican la distancia desde los bordes de esa referencia.
+*/
+.posicion-demo {
+    position: relative;
+    margin-top: 20px;
+    padding: 20px 10px 10px;
+    background-color: #f1f5f9;
+    border: 1px solid #bbb;
+}
+
+.posicion-etiqueta {
+    position: absolute;
+    top: -10px;
+    right: 8px;
+    padding: 2px 6px;
+    color: white;
+    background-color: #2563eb;
+}
+
+/* :hover cambia el enlace al pasar el raton por encima. */
+.enlace-demo {
+    display: inline-block;
+    padding: 8px 12px;
+    color: #1e40af;
+    background-color: #dbeafe;
+    border-radius: 4px;
+}
+
+.enlace-demo:hover {
+    color: white;
+    background-color: #2563eb;
 }
 
 
-/* =====================================================
-   16. RESPONSIVE - MÓVILES
-   ===================================================== */
+/* 7. FLEXBOX: TRES COLUMNAS */
 
-/* Pantallas de 600px o menos */
+/*
+    Flexbox sirve para ordenar elementos en una fila o una columna.
+    Aqui, los article hijos se muestran en una fila.
+*/
+.hiru-zutabe {
+    display: flex;
 
-@media (max-width: 600px) {
+    /* Espacio entre las tarjetas. */
+    gap: 20px;
+}
+
+.zutabe {
+    /*
+        flex: 1 hace que cada tarjeta se reparta el espacio disponible
+        por igual con las demas tarjetas.
+    */
+    flex: 1;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+}
+
+.ikonoa {
+    color: #2563eb;
+    font-size: 24px;
+    font-weight: bold;
+}
 
 
-    /* Cabecera */
+/* 8. CSS GRID: CUADRICULA */
 
-    .goiburua-barne {
+/*
+    Grid permite organizar elementos en filas y columnas.
+    repeat(2, 1fr) crea dos columnas iguales.
+    fr es una fraccion del espacio disponible.
+*/
+.grid-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
 
+.grid-elementu {
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+}
+
+/* Elimina el margen superior del titulo dentro de cada tarjeta. */
+.grid-elementu h3 {
+    margin-top: 0;
+}
+
+/* Cuatro columnas del mismo ancho. */
+.grid-cuatro {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.grid-tarjeta {
+    padding: 15px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+.grid-tarjeta h3 {
+    margin-top: 0;
+}
+
+/* span 2 hace que esta tarjeta ocupe dos columnas de la cuadrícula. */
+.grid-doble {
+    grid-column: span 2;
+    background-color: #dbeafe;
+}
+
+.grid-ejemplo-titulo {
+    margin: 30px 0 5px;
+}
+
+.grid-ejemplo-texto {
+    margin-top: 0;
+}
+
+
+/* 9. FORMULARIO */
+
+.formulario {
+    /* El formulario no crece por encima de 600px. */
+    max-width: 600px;
+
+    /* Centra el formulario horizontalmente. */
+    margin: 0 auto;
+
+    padding: 25px;
+    background-color: white;
+    border-radius: 8px;
+}
+
+.form-taldea {
+    margin-bottom: 15px;
+}
+
+.form-taldea label {
+    /*
+        label normalmente ocupa solo el espacio de su texto.
+        block hace que empiece en una linea nueva.
+    */
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/*
+    Se pueden agrupar selectores separados por coma.
+    Estas reglas se aplican tanto a input como a textarea.
+*/
+.form-taldea input,
+.form-taldea textarea {
+    /* Ocupan todo el ancho disponible de su contenedor. */
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+
+    /* Hereda la letra definida en body. */
+    font: inherit;
+}
+
+
+/* 10. MEDIA QUERY: ADAPTAR LA PAGINA A MOVILES */
+
+/*
+    Una media query aplica estilos solo si se cumple una condicion.
+    Aqui se usan estas reglas cuando el ancho de pantalla es de 700px
+    o menos.
+*/
+@media (max-width: 700px) {
+    /*
+        flex-direction: column coloca los hijos uno debajo de otro.
+        Se adapta la cabecera y la lista del menu a una pantalla estrecha.
+    */
+    .goiburua-barne,
+    .nabigazioa ul {
         flex-direction: column;
-
-        align-items: center;
-
     }
-
-
-    /* Menú */
 
     .nabigazioa ul {
-
-        flex-wrap: wrap;
-
-        justify-content: center;
-
-        gap: 15px;
-
+        gap: 10px;
+        margin: 0;
     }
 
-
-    /* Hero */
-
-    .hero {
-
-        padding: 25px;
-
-    }
-
-
-    /* Columnas en vertical */
-
+    /* Las tres tarjetas pasan de una fila a una columna. */
     .hiru-zutabe {
-
         flex-direction: column;
-
     }
 
-
-    /* Grid de una columna */
-
+    /* Grid pasa de dos columnas a una. */
     .grid-wrapper {
-
         grid-template-columns: 1fr;
-
     }
 
-
-    /* El primer elemento deja de ocupar dos columnas */
-
-    .item-1 {
-
-        grid-column: span 1;
-
-        grid-row: span 1;
-
+    /* En pantallas medianas, la cuadrícula pasa de cuatro a dos columnas. */
+    .grid-cuatro {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-
-    /* Layout de una columna */
-
-    .layout-wrapper {
-
+    /* Las tres tarjetas pasan a una columna en pantallas estrechas. */
+    .ejemplos-columnas {
         grid-template-columns: 1fr;
+    }
 
-        grid-template-rows: auto;
-
+    /* En movil, las zonas de la maqueta aparecen una debajo de otra. */
+    .maqueta {
+        grid-template-columns: 1fr;
         grid-template-areas:
-
-            "header"
-
-            "sidebar"
-
-            "main"
-
-            "aside"
-
-            "footer";
-
+            "cabecera"
+            "menu"
+            "contenido"
+            "pie";
     }
 
-
-    /* Formulario */
-
-    .formulario {
-
-        padding: 20px;
-
+    .maqueta-contenido {
+        grid-template-columns: 1fr;
     }
 
+    /* Reduce el espacio interior del bloque principal. */
+    .hero {
+        padding: 25px;
+    }
+}
+
+/* En móviles estrechos se usa una columna y se quita el span de dos. */
+@media (max-width: 450px) {
+    .grid-cuatro {
+        grid-template-columns: 1fr;
+    }
+
+    .grid-doble {
+        grid-column: span 1;
+    }
 }
 
 
-/* =====================================================
-   17. ACCESIBILIDAD
-   ===================================================== */
+/* 11. PIE DE PAGINA */
 
-/* Resalta los elementos al navegar con teclado */
-
-a:focus-visible,
-button:focus-visible,
-input:focus-visible,
-textarea:focus-visible {
-
-    outline: 3px solid orange;
-
-    outline-offset: 4px;
-
+.oina {
+    padding: 25px;
+    color: white;
+    text-align: center;
+    background-color: #1e293b;
 }
 
-
-/* Respeta la preferencia de movimiento reducido */
-
-@media (prefers-reduced-motion: reduce) {
-
-    *,
-    *::before,
-    *::after {
-
-        animation-duration: 0.01ms !important;
-
-        transition-duration: 0.01ms !important;
-
-        scroll-behavior: auto !important;
-
-    }
-
+.oina h3 {
+    margin-top: 0;
 }

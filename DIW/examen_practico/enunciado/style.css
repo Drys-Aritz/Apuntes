@@ -45,16 +45,15 @@ body {
     transition: 0.5s;
 }
 
-
 /* ===================
 
 =================== */
 
-
+.container,
 .edukia {
-    display: flex;
-    gap: 30px;
-    align-items: stretch;
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
 .sarrera {
@@ -65,8 +64,72 @@ body {
     text-align: center;
 }
 
+.edukia section {
+    margin: 40px 0;
+}
 
 
+section {
+    display: block;
+    unicode-bidi: isolate;
+}
+
+.hiru-zutabe {
+    display: flex;
+    gap: 20px;
+}
+
+.zutabe {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: left;
+}
+
+.ezkerra {
+    box-shadow: 0px -5px #707cff;
+}
+
+.ezkerra img {
+    width: 100%;
+}
+
+.erdia {
+    box-shadow: 0px -5px #70ffa9;
+}
+
+.eskuina {
+    box-shadow: 0px -5px #ffc370;
+}
+
+
+.grid-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+
+.grid-elementu {
+    display: flex;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: left;
+}
+
+.item-1 {
+    grid-column: span 2;
+    display: block;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.item-1 img {
+    width: 100%;
+}
 
 /* ===================
 
@@ -75,7 +138,7 @@ body {
 .oina {
     text-align: center;
     justify-content: center;
-    height:70px;
+    height: 70px;
     width: 100%;
     padding-top: 16px;
 

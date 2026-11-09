@@ -1,381 +1,234 @@
-
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>Web Ariketa Pro</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apuntes básicos de CSS</title>
     <link rel="stylesheet" href="apuntesExa.css">
 </head>
-
 <body>
-
-    <!-- =========================================
-         1. HEADER - CABECERA
-    ========================================== -->
-
     <header class="goiburua">
-
         <div class="goiburua-barne container">
-
-            <a href="#" class="logo">
-                WEB<span>PRO</span>
-            </a>
-
+            <a href="#hasiera" class="logo">CSS<span>BASICO</span></a>
             <nav class="nabigazioa">
-
                 <ul>
-                    <li><a href="#hasiera">Hasiera</a></li>
-                    <li><a href="#zutabeak">Zutabeak</a></li>
+                    <li><a href="#hasiera">Inicio</a></li>
+                    <li><a href="#estructura">Estructura</a></li>
+                    <li><a href="#estilos">Estilos</a></li>
+                    <li><a href="#zutabeak">Flexbox</a></li>
                     <li><a href="#grid">Grid</a></li>
-                    <li><a href="#kontaktua">Kontaktua</a></li>
+                    <li><a href="#kontaktua">Formulario</a></li>
                 </ul>
-
             </nav>
-
-            <a href="#kontaktua" class="btn btn-header">
-                Kontaktatu
-            </a>
-
+            <a href="#kontaktua" class="btn btn-header">Contacto</a>
         </div>
-
     </header>
 
-
-    <!-- =========================================
-         2. MAIN - EDUKI NAGUSIA
-    ========================================== -->
-
     <main class="edukia">
-
-        <!-- HERO / SARRERA -->
-
         <section class="hero" id="hasiera">
-
-            <div class="hero-edukia">
-
-                <span class="etiketa">
-                    CSS PRAKTIKA
-                </span>
-
-                <h1>
-                    Ikasi CSS
-                    <span>maila aurreratuan</span>
-                </h1>
-
-                <p>
-                    Aprende a diseñar páginas web modernas
-                    utilizando Flexbox, Grid y CSS avanzado.
-                </p>
-
-                <a href="#zutabeak" class="btn">
-                    Hasi ikasten
-                </a>
-
-            </div>
-
-            <div class="hero-irudia">
-
-                <img src="irudia1.jpg"
-                     alt="Diseño web">
-
-            </div>
-
+            <span class="etiketa">APUNTES DE CSS</span>
+            <h1>Aprende CSS <span>paso a paso</span></h1>
+            <p>CSS sirve para dar estilo a una página HTML: colores, tamaños y distribución.</p>
+            <a href="#zutabeak" class="btn">Ver ejemplos</a>
         </section>
 
-
-        <!-- =========================================
-             3. FLEXBOX - HIRU ZUTABE
-        ========================================== -->
-
-        <section class="zutabe-atala" id="zutabeak">
-
+        <section id="estructura">
             <div class="atal-goiburua">
-
-                <span class="azpititulua">
-                    FLEXBOX
-                </span>
-
-                <h2>Hiru zutabe nagusiak</h2>
-
-                <p>
-                    Tres columnas organizadas mediante Flexbox.
-                </p>
-
+                <span class="azpititulua">HTML Y MAQUETACION</span>
+                <h2>Estructura de una página</h2>
+                <p>Las etiquetas semánticas describen cada parte; CSS las organiza.</p>
             </div>
 
-
-            <div class="hiru-zutabe">
-
-                <article class="zutabe ezkerra">
-
-                    <div class="ikonoa">01</div>
-
-                    <h3>HTML</h3>
-
-                    <p>
-                        Estructura y organización
-                        del contenido de la web.
-                    </p>
-
-                    <a href="#">Leer más →</a>
-
-                </article>
-
-
-                <article class="zutabe erdia">
-
-                    <div class="ikonoa">02</div>
-
-                    <h3>CSS</h3>
-
-                    <p>
-                        Diseño, colores, dimensiones
-                        y organización visual.
-                    </p>
-
-                    <a href="#">Leer más →</a>
-
-                </article>
-
-
-                <article class="zutabe eskuina">
-
-                    <div class="ikonoa">03</div>
-
-                    <h3>JavaScript</h3>
-
-                    <p>
-                        Interactividad y comportamiento
-                        de las páginas web.
-                    </p>
-
-                    <a href="#">Leer más →</a>
-
-                </article>
-
+            <!-- Ejemplo de una estructura típica: cabecera, navegación, contenido y pie. -->
+            <div class="maqueta">
+                <header class="maqueta-cabecera">
+                    <code>&lt;header&gt;</code> Cabecera
+                </header>
+                <nav class="maqueta-menu">
+                    <code>&lt;nav&gt;</code> Menú
+                </nav>
+                <section class="maqueta-contenido">
+                    <article class="maqueta-articulo">
+                        <code>&lt;article&gt;</code>
+                        <h3>Contenido principal</h3>
+                        <p>Un artículo puede entenderse por sí solo, como una noticia o una entrada.</p>
+                    </article>
+                    <aside class="maqueta-aside">
+                        <code>&lt;aside&gt;</code>
+                        <p>Información secundaria, como una nota o una barra lateral.</p>
+                    </aside>
+                </section>
+                <footer class="maqueta-pie">
+                    <code>&lt;footer&gt;</code> Pie de página
+                </footer>
             </div>
-
+            <p class="maqueta-nota">
+                <strong>Idea clave:</strong> HTML crea las partes; Flexbox o Grid las colocan.
+                En CSS Grid, <code>grid-template-areas</code> asigna un nombre a cada zona.
+            </p>
         </section>
 
-
-        <!-- =========================================
-             4. GRID - CUADRÍCULA
-        ========================================== -->
-
-        <section class="grid-arlarea" id="grid">
-
+        <section id="estilos">
             <div class="atal-goiburua">
-
-                <span class="azpititulua">
-                    CSS GRID
-                </span>
-
-                <h2>Galería de contenidos</h2>
-
-                <p>
-                    Ejemplo de distribución con CSS Grid.
-                </p>
-
+                <span class="azpititulua">CAJAS Y SELECTORES</span>
+                <h2>Más recursos básicos de CSS</h2>
+                <p>Ejemplos de selectores, modelo de caja y sombras.</p>
             </div>
 
-
-            <div class="grid-wrapper">
-
-                <article class="grid-elementu item-1">
-
-                    <img src="irudia2.jpg" alt="Diseño web">
-
-                    <div class="grid-testua">
-
-                        <span class="categoria">
-                            DESTACADO
-                        </span>
-
-                        <h3>Diseño web moderno</h3>
-
-                        <p>
-                            Aprende a crear estructuras
-                            visuales con CSS.
-                        </p>
-
+            <div class="ejemplos-columnas">
+                <article class="ejemplo-card">
+                    <h3>Modelo de caja</h3>
+                    <p>Cada elemento tiene contenido, espacio interior, borde y margen exterior.</p>
+                    <div class="caja-demo">
+                        Contenido
                     </div>
-
+                    <code>margin → border → padding → contenido</code>
                 </article>
 
+                <article class="ejemplo-card">
+                    <h3>Selectores</h3>
+                    <p>El selector elige qué elemento HTML recibe los estilos.</p>
+                    <ul class="lista-selectores">
+                        <li><code>p</code> selecciona todos los párrafos.</li>
+                        <li><code>.aviso</code> selecciona elementos con clase aviso.</li>
+                        <li><code>#menu</code> selecciona id="menu".</li>
+                    </ul>
+                </article>
 
-                <article class="grid-elementu item-2">
+                <article class="ejemplo-card ejemplo-sombra">
+                    <h3>Sombra y display</h3>
+                    <p><code>box-shadow</code> añade una sombra a una caja.</p>
+                    <p><code>display: block</code> empieza en otra línea; <code>inline</code> comparte línea.</p>
+                    <span class="etiqueta-demo">inline</span>
+                    <span class="etiqueta-demo">inline</span>
+                </article>
+
+                <article class="ejemplo-card">
+                    <h3>Fondo y borde</h3>
+                    <p>Prueba colores de fondo y distintos tipos de borde.</p>
+                    <div class="fondo-demo">Borde discontinuo</div>
+                </article>
+
+                <article class="ejemplo-card">
+                    <h3>Posicionar elementos</h3>
+                    <p><code>relative</code> sirve de referencia; <code>absolute</code> coloca un elemento dentro de ella.</p>
+                    <div class="posicion-demo">
+                        Caja padre: relative
+                        <span class="posicion-etiqueta">absolute</span>
+                    </div>
+                </article>
+
+                <article class="ejemplo-card">
+                    <h3>Pseudoclase :hover</h3>
+                    <p>Aplica un estilo cuando el ratón pasa por encima.</p>
+                    <a class="enlace-demo" href="#estilos">Pasa el ratón por aquí</a>
+                </article>
+            </div>
+        </section>
+
+        <section id="zutabeak">
+            <div class="atal-goiburua">
+                <span class="azpititulua">FLEXBOX</span>
+                <h2>Organizar elementos en una fila</h2>
+                <p>Usa Flexbox para colocar elementos y repartir el espacio.</p>
+            </div>
+            <div class="hiru-zutabe">
+                <article class="zutabe">
+                    <div class="ikonoa">01</div>
+                    <h3>HTML</h3>
+                    <p>HTML define el contenido de la página.</p>
+                </article>
+                <article class="zutabe">
+                    <div class="ikonoa">02</div>
+                    <h3>CSS</h3>
+                    <p>CSS define cómo se ve ese contenido.</p>
+                </article>
+                <article class="zutabe">
+                    <div class="ikonoa">03</div>
                     <h3>Flexbox</h3>
-                    <p>Organización de elementos.</p>
+                    <p><code>display: flex;</code> coloca los elementos hijos en una fila.</p>
                 </article>
-
-
-                <article class="grid-elementu item-3">
-                    <h3>Grid</h3>
-                    <p>Distribución de filas y columnas.</p>
-                </article>
-
-
-                <article class="grid-elementu item-4">
-                    <h3>Responsive</h3>
-                    <p>Adaptación a diferentes pantallas.</p>
-                </article>
-
-
-                <article class="grid-elementu item-5">
-                    <h3>Animaciones</h3>
-                    <p>Transiciones y transformaciones.</p>
-                </article>
-
             </div>
-
         </section>
 
-
-        <!-- =========================================
-             5. GRID CON AREAS
-        ========================================== -->
-
-        <section class="layout-atala">
-
+        <section id="grid">
             <div class="atal-goiburua">
-
-                <span class="azpititulua">
-                    GRID AREAS
-                </span>
-
-                <h2>Distribución avanzada</h2>
-
+                <span class="azpititulua">CSS GRID</span>
+                <h2>Organizar elementos en filas y columnas</h2>
+                <p>Grid crea una cuadrícula para distribuir los elementos.</p>
+            </div>
+            <div class="grid-wrapper">
+                <article class="grid-elementu">
+                    <h3>Selector</h3>
+                    <p>Indica qué elemento HTML queremos cambiar, por ejemplo <code>p</code> o <code>.caja</code>.</p>
+                </article>
+                <article class="grid-elementu">
+                    <h3>Propiedad y valor</h3>
+                    <p>Dentro de las llaves se escribe una propiedad y su valor: <code>color: blue;</code>.</p>
+                </article>
+                <article class="grid-elementu">
+                    <h3>Columnas</h3>
+                    <p><code>grid-template-columns: 1fr 1fr;</code> crea dos columnas iguales.</p>
+                </article>
+                <article class="grid-elementu">
+                    <h3>Separación</h3>
+                    <p><code>gap: 20px;</code> deja espacio entre los elementos.</p>
+                </article>
             </div>
 
-
-            <div class="layout-wrapper">
-
-                <div class="layout-header">
-                    HEADER
-                </div>
-
-                <div class="layout-sidebar">
-                    SIDEBAR
-                </div>
-
-                <div class="layout-main">
-                    MAIN CONTENT
-                    <p>
-                        Contenido principal de la página.
-                    </p>
-                </div>
-
-                <div class="layout-aside">
-                    ASIDE
-                </div>
-
-                <div class="layout-footer">
-                    FOOTER
-                </div>
-
+            <h3 class="grid-ejemplo-titulo">Ejemplo: cuatro columnas y una tarjeta doble</h3>
+            <p class="grid-ejemplo-texto">
+                La primera tarjeta ocupa dos columnas con <code>grid-column: span 2;</code>.
+            </p>
+            <div class="grid-cuatro">
+                <article class="grid-tarjeta grid-doble">
+                    <h3>Ocupa dos columnas</h3>
+                    <p>Se usa para destacar un elemento.</p>
+                </article>
+                <article class="grid-tarjeta">
+                    <h3>Columna 3</h3>
+                </article>
+                <article class="grid-tarjeta">
+                    <h3>Columna 4</h3>
+                </article>
+                <article class="grid-tarjeta">
+                    <h3>Otra fila</h3>
+                </article>
+                <article class="grid-tarjeta">
+                    <h3>Otra tarjeta</h3>
+                </article>
+                <article class="grid-tarjeta">
+                    <h3>Última tarjeta</h3>
+                </article>
             </div>
-
         </section>
 
-
-        <!-- =========================================
-             6. FORMULARIO
-        ========================================== -->
-
-        <section class="formulario-atala" id="kontaktua">
-
+        <section id="kontaktua">
             <div class="atal-goiburua">
-
-                <span class="azpititulua">
-                    FORMULARIOAK
-                </span>
-
-                <h2>Contacto</h2>
-
+                <span class="azpititulua">FORMULARIO</span>
+                <h2>Ejemplo de formulario</h2>
             </div>
-
-
             <form class="formulario">
-
                 <div class="form-taldea">
-
-                    <label for="izena">
-                        Nombre
-                    </label>
-
-                    <input
-                        type="text"
-                        id="izena"
-                        placeholder="Escribe tu nombre"
-                    >
-
+                    <label for="izena">Nombre</label>
+                    <input type="text" id="izena" placeholder="Escribe tu nombre">
                 </div>
-
-
                 <div class="form-taldea">
-
-                    <label for="email">
-                        Correo electrónico
-                    </label>
-
-                    <input
-                        type="email"
-                        id="email"
-                        placeholder="ejemplo@email.com"
-                    >
-
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" placeholder="nombre@ejemplo.com">
                 </div>
-
-
                 <div class="form-taldea">
-
-                    <label for="mezua">
-                        Mensaje
-                    </label>
-
-                    <textarea
-                        id="mezua"
-                        rows="5"
-                        placeholder="Escribe tu mensaje..."
-                    ></textarea>
-
+                    <label for="mezua">Mensaje</label>
+                    <textarea id="mezua" rows="4" placeholder="Escribe un mensaje"></textarea>
                 </div>
-
-
-                <button type="submit" class="btn">
-                    Enviar mensaje
-                </button>
-
+                <button type="submit" class="btn">Enviar</button>
             </form>
-
         </section>
-
     </main>
 
-
-    <!-- =========================================
-         7. FOOTER - OINA
-    ========================================== -->
-
     <footer class="oina">
-
-        <div class="oina-barne">
-
-            <h3>WEB PRO</h3>
-
-            <p>
-                © 2026 Web Ariketa - Todos los derechos reservados.
-            </p>
-
-        </div>
-
+        <h3>Apuntes básicos de CSS</h3>
+        <p>Ejemplos de selectores, Flexbox, Grid y formularios.</p>
     </footer>
-
 </body>
 </html>
