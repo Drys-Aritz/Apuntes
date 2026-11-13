@@ -24,3 +24,43 @@ Cuando te pase un ejercicio, práctica o proyecto, quiero que lo **resuelvas com
 Explícame brevemente cómo funciona lo importante y cómo ejecutar o comprobar el resultado, utilizando un lenguaje sencillo.
 
 **OBJETIVO:** Quiero trabajos completos, correctos y con la máxima puntuación posible, pero realizados con soluciones de nivel principiante de DAW, que pueda entender y explicar al profesor.
+
+---
+
+
+
+### Diseño chachi ###
+
+*1º*
+
+    "chat.notifyWindowOnConfirmation": "off",
+    "chat.notifyWindowOnResponseReceived": "off",
+     
+*2º*
+
+    "workbench.colorCustomizations": {
+        "inlineChatDiff.inserted": "#00C85318",
+        "inlineChatDiff.removed": "#FF174418",
+
+        "diffEditor.insertedTextBackground": "#00C85312",
+        "diffEditor.removedTextBackground": "#FF174412",
+
+        "diffEditor.insertedLineBackground": "#00C85308",
+        "diffEditor.removedLineBackground": "#FF174408"
+    }
+
+*Vaciacion invisible*
+
+    "workbench.colorCustomizations": {
+        "inlineChatDiff.inserted": "#00000000",
+        "inlineChatDiff.removed": "#00000000",
+
+        "diffEditor.insertedTextBackground": "#00000000",
+        "diffEditor.removedTextBackground": "#00000000",
+
+        "diffEditor.insertedLineBackground": "#00000000",
+        "diffEditor.removedLineBackground": "#00000000",
+
+        "diffEditorGutter.insertedLineBackground": "#00000000",
+        "diffEditorGutter.removedLineBackground": "#00000000"
+    }

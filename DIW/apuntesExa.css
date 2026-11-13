@@ -1,75 +1,4 @@
-/*
-    APUNTES DE CSS
-
-    CSS se escribe con esta estructura:
-
-    selector {
-        propiedad: valor;
-    }
-
-    Ejemplo:
-    p {
-        color: blue;
-    }
-
-    El selector indica a que elemento HTML se aplica el estilo.
-    La propiedad indica que queremos cambiar y el valor como queremos verlo.
-*/
-
-/*
-    0. ESTRUCTURA Y MAQUETACION
-
-    HTML crea la estructura y organiza el contenido.
-    CSS da estilo y decide como se distribuyen los elementos.
-
-    Ejemplo de estructura habitual en HTML:
-
-    <header>Cabecera de la pagina</header>
-    <nav>Menu de navegacion</nav>
-    <main>
-        <section>Una parte del contenido</section>
-        <section>Otra parte del contenido</section>
-    </main>
-    <footer>Pie de pagina</footer>
-
-    Estas etiquetas describen la funcion del contenido:
-    - header: cabecera.
-    - nav: enlaces de navegacion.
-    - main: contenido principal; normalmente hay uno por pagina.
-    - section: agrupa contenido relacionado.
-    - article: contenido independiente, como una noticia o tarjeta.
-    - aside: contenido secundario, como una barra lateral.
-    - footer: pie de pagina o de una seccion.
-
-    Maquetar significa colocar y distribuir esos elementos en la pagina.
-    Algunas formas habituales de maquetar son:
-    - Flujo normal: los bloques aparecen uno debajo de otro.
-    - Flexbox: coloca elementos en una fila o columna.
-    - Grid: organiza elementos en filas y columnas.
-
-    Ejemplo de Grid con areas. Es solo un apunte; no se aplica a esta pagina:
-
-    .pagina {
-        display: grid;
-        grid-template-columns: 1fr 3fr;
-        grid-template-areas:
-            "cabecera cabecera"
-            "menu     contenido"
-            "pie      pie";
-        gap: 10px;
-    }
-
-    .cabecera  { grid-area: cabecera; }
-    .menu      { grid-area: menu; }
-    .contenido { grid-area: contenido; }
-    .pie       { grid-area: pie; }
-
-    Los nombres de grid-template-areas deben coincidir con los valores
-    de grid-area. Un punto (.) deja una celda vacia.
-*/
-
-
-/* 1. SELECTORES Y ESTILOS GENERALES */
+﻿/* 1. SELECTORES Y ESTILOS GENERALES */
 
 /* El asterisco (*) selecciona todos los elementos de la pagina. */
 * {
@@ -127,7 +56,8 @@ a {
 }
 
 
-/* 2. CABECERA Y MENU */
+/* Menú principal */
+
 
 /* El punto selecciona una clase: .goiburua selecciona class="goiburua". */
 .goiburua {
@@ -212,11 +142,17 @@ a {
 
     /* Cambia el cursor para indicar que se puede pulsar. */
     cursor: pointer;
+
+    /* Añade una transicion suave para mejorar la experiencia visual. */
+    transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
 }
 
 /* Cambia el fondo del boton al pasar el raton por encima. */
 .btn:hover {
     background-color: #1d4ed8;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(37, 99, 235, 0.28);
 }
 
 /*
@@ -281,7 +217,6 @@ a {
 }
 
 /* 5. EJEMPLO DE ESTRUCTURA HTML Y MAQUETACION */
-
 /*
     Este ejemplo del HTML usa Grid para colocar sus zonas.
     Cada nombre de grid-template-areas se corresponde con un grid-area.
@@ -364,6 +299,12 @@ a {
 
     /* box-shadow: desplazamiento-x desplazamiento-y desenfoque color. */
     box-shadow: 0 3px 8px #0000001a;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ejemplo-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
 }
 
 /* Muestra contenido, padding y borde; el margen separa esta caja. */
@@ -476,6 +417,12 @@ a {
     repeat(2, 1fr) crea dos columnas iguales.
     fr es una fraccion del espacio disponible.
 */
+
+/*
+    La propiedad gap añade espacio entre los elementos hijos del grid.
+    Esto hace que la estructura se vea más ordenada sin tener que
+    crear margenes manuales en cada tarjeta o bloque.
+*/
 .grid-wrapper {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -568,6 +515,14 @@ a {
 
     /* Hereda la letra definida en body. */
     font: inherit;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-taldea input:focus,
+.form-taldea textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 
 
