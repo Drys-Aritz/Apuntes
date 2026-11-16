@@ -1,0 +1,44 @@
+ANIMALIEN ATERPETXEA - EXAMEN DWS (PHP)
+=======================================
+
+1. PREPARAR LA BASE DE DATOS (desde phpMyAdmin)
+   - Arranca Apache y MySQL (XAMPP / MAMP / Laragon).
+   - Abre http://localhost/phpmyadmin
+   - Crea una base de datos nueva llamada:  exam_aterpetxea  (cotejamiento utf8mb4_general_ci)
+   - Entra en ella, pestaña "Importar", elige exam_aterpetxea.sql y pulsa "Importar".
+   (El .sql NO va dentro del proyecto, se carga desde phpMyAdmin.)
+
+2. COLOCAR EL PROYECTO
+   - Copia la carpeta "aterpetxea" dentro de htdocs (XAMPP) o www (Laragon).
+   - Copia las imagenes pet1.jpg ... pet20.jpg del material del examen dentro de la carpeta "images".
+   - Si tu MySQL tiene contraseña (MAMP usa "root"), cambiala en connection.php.
+
+3. ABRIR
+   - http://localhost/aterpetxea/index.php
+
+4. USUARIO PARA PROBAR (admin)
+   - Usuario: admin   Contraseña: password
+   - (jon, ane y mikel tambien valen con la misma contraseña; todos son admin)
+   - Las contraseñas de la BD están cifradas con password_hash; el login usa password_verify.
+
+5. ARCHIVOS
+   connection.php      Conexion a la BD (todas las conexiones salen de aqui) y arranque de sesion
+   functions.php       getPopularBreeds, getAdoptionPercentage y funciones auxiliares
+   includes/header.php Cabecera y menu (cambia si hay sesion)
+   includes/footer.php Pie con el nombre del autor
+   css/style.css       Estilos
+   index.php           Razas populares y % de adopciones
+   login.php / sessiontart.php     Iniciar sesion (sessiontart.php carga login.php)
+   logout.php / sessionclose.php   Cerrar sesion (sessionclose.php carga logout.php)
+   pets.php            Mascotas sin adoptar y adoptadas, de 3 en 3, ordenadas por fecha
+   showpet.php         Ficha de la mascota (distinta si eres admin) y boton Aldatu
+   delete.php          Pagina de confirmacion para dar de baja (sin JavaScript)
+
+6. COMO COMPROBAR CADA APARTADO
+   - Menu: sin sesion sale Hasiera / Maskotak / Saioa Hasi; con sesion Hasiera / Maskotak / Saioa Itxi / Kaixo nombre.
+   - Index: 3 razas con mas mascotas y los porcentajes de adoptadas / disponibles.
+   - Login: usuario o clave mal -> "Datu okerrak. Ez daukazu baimenik."; bien -> vuelve a index.php.
+   - Pets: dos secciones, 3 mascotas por fila, las mas antiguas primero.
+   - Showpet sin sesion: solo nombre, raza, edad, estado, fecha y descripcion.
+   - Showpet como admin: todos los datos, boton Aldatu, y Ezabatu solo si esta adoptada.
+   - Ezabatu: pagina de confirmacion con "Ados, baja eman" y "Atzera itzuli".

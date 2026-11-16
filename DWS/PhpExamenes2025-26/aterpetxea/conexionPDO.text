@@ -1,0 +1,47 @@
+<?php
+// Arrancamos la sesión para usar $_SESSION en todas las páginas
+session_start();
+// Servidor de la base de datos
+$host = "localhost";
+// Nombre de la base de datos
+$database = "exam_aterpetxea";
+// Usuario de MySQL
+$user = "root";
+// Contraseña de MySQL (vacía en XAMPP)
+$password = "";
+// Intentamos conectar
+try {
+    // Creamos la conexión PDO usando UTF-8
+    $conn = new PDO("mysql:host=$host;dbname=$database;charset=utf8mb4", $user, $password);
+    // Hacemos que los errores salten como excepciones
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    // Hacemos que los resultados vengan como arrays asociativos
+    $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+// Si algo falla al conectar...
+} catch (PDOException $e) {
+    // ...paramos y mostramos el error
+    die("Errorea datu-basearekin konektatzean: " . $e->getMessage());
+}
+?>
+
+No basta con cambiar solo ese archivo. El resto del proyecto (functions.php, login.php, showpet.php y delete.php) usa funciones mysqli_*, que no funcionan con un objeto PDO. Habría que reescribir esas consultas con prepare(), execute() y fetch().
+
+Hay tres cosas más que comprobar:
+    El nombre de la variable. Yo la llamo $conn. Si el resto de tu ejercicio usa $conexion, o cualquier otro nombre, cambia el nombre en el archivo o en el resto del código. Tienen que coincidir.
+
+    session_start(). Lo puse dentro de connection.php porque en este examen hace falta sesión en todas las páginas. Si tu ejercicio no usa sesiones, bórralo. Si ya llamas a session_start() en otro sitio, no lo repitas: PHP muestra un aviso (notice) si se llama dos veces.
+
+    El resto del código tiene que ser PDO. Si tus consultas usan $conexion->query(...) con mysqli, no funcionarán con un objeto PDO. En PDO se escribe así:
+
+        // Consulta sin parámetros
+        $stmt = $conn->query("SELECT * FROM pets");
+        // Cogemos todas las filas
+        $pets = $stmt->fetchAll();
+
+        // Consulta con parámetro
+        $stmt = $conn->prepare("SELECT * FROM pets WHERE id = ?");
+        // Ejecutamos pasando el valor
+        $stmt->execute([$id]);
+        // Cogemos una fila
+        $pet = $stmt->fetch();
+
