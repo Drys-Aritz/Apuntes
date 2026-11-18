@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 3 - Fetch</title>
+</head>
+
+<body>
+
+
+    <div id="listas"></div>
+
+    <script>
+        fetch("https://jsonplaceholder.typicode.com/posts")
+            .then(response => response.json())
+            .then(data => {
+                let lista = "<ul>";
+
+                for (let i = 0; i < 5; i++) {
+                    lista += `
+                        <li>Título: ${data[i].title}</li>
+                    `;
+                }
+
+                lista += "</ul>";
+
+                document.getElementById("listas").innerHTML = lista;
+
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+    </script>
+
+</body>
+
+</html>

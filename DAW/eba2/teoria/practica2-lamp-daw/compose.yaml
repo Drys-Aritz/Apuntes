@@ -1,0 +1,60 @@
+services:
+ base_datos:
+  image: mariadb:11.4
+  container_name: wp_db
+  restart: unless-stopped
+  environment:
+   MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASS}
+   MARIADB_DATABASE: ${DB_NAME}
+   MARIADB_USER: ${DB_USER}
+   MARIADB_PASSWORD: ${DB_PASS}
+  volumes:
+   - wp_db_data:/var/lib/mysql
+  networks:
+   - red_wordpress
+  healthcheck:
+   test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+   interval: 10s
+   timeout: 5s
+   retries: 5
+
+ wordpress:
+  image: wordpress:php8.3-apache
+  container_name: wp_app
+  restart: unless-stopped
+  depends_on:
+   base_datos:
+    condition: service_healthy
+  environment:
+   WORDPRESS_DB_HOST: base_datos:3306
+   WORDPRESS_DB_NAME: ${DB_NAME}
+   WORDPRESS_DB_USER: ${DB_USER}
+   WORDPRESS_DB_PASSWORD: ${DB_PASS}
+  ports:
+   - "80:80"
+  volumes:
+   - wp_app_data:/var/www/html
+  networks:
+   - red_wordpress
+
+ gestor_phpmyadmin:
+  image: phpmyadmin:latest
+  container_name: wp_phpmyadmin
+  restart: unless-stopped
+  depends_on:
+   - base_datos
+  environment:
+   PMA_HOST: base_datos
+   PMA_PORT: 3306
+  ports:
+   - "8081:80"
+  networks:
+   - red_wordpress
+
+networks:
+ red_wordpress:
+  driver: bridge
+
+volumes:
+ wp_db_data:
+ wp_app_data:
