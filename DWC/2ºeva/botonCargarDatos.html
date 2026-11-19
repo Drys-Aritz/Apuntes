@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 6 - Fetch</title>
+</head>
+
+<body>
+
+    <h1>Datos del usuario</h1>
+    <hr>
+    <button id="boton">cargar</button>
+    <hr>
+    <div id="usuario"></div>
+
+    <script>
+        fetch("https://jsonplaceholder.typicode.com/users/1")
+            .then(response => response.json())
+            .then(data => {
+                
+                document.getElementById("usuario").textContent = `<p>nombre: ${data.username}</p>`;
+            })
+            .catch(error => {
+                console.error("Error:", error);
+            });
+    </script>
+
+</body>
+
+</html>
